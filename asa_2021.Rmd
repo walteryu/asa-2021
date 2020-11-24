@@ -223,15 +223,15 @@ acs19_race <- read.csv(
 )
 
 # show table dim
-print("Show table dimensions below:")
-dim(acs19_language)
-dim(acs19_hh_income)
-dim(acs19_hh_income_median)
-dim(acs19_poverty)
-dim(acs19_housing)
-dim(acs19_education)
-dim(acs19_commute)
-dim(acs19_race)
+# print("Show table dimensions below:")
+# dim(acs19_language)
+# dim(acs19_hh_income)
+# dim(acs19_hh_income_median)
+# dim(acs19_poverty)
+# dim(acs19_housing)
+# dim(acs19_education)
+# dim(acs19_commute)
+# dim(acs19_race)
 
 # remove first row
 acs19_language = acs19_language[-1, ]
@@ -265,16 +265,16 @@ acs19_race = acs19_race[-1, ]
 # subset by columns
 # ref: https://www.statmethods.net/management/subset.html
 var_lang = c(
-		"GEO_ID",
-		"B06007_002E",
-		"B06007_004E",
-		"B06007_005E"
+	"GEO_ID",
+	"B06007_002E",
+	"B06007_004E",
+	"B06007_005E"
 )
-a19lang = acs19_language[var_lang]
+xwalk_acs19_lang = acs19_language[var_lang]
 
 # rename columns
 # ref: https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
-a19lang = a19lang %>%
+xwalk_acs19_lang = xwalk_acs19_lang %>%
   rename(
     lang_english = B06007_002E,
     lang_spanish = B06007_004E,
