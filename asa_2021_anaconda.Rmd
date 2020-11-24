@@ -15,13 +15,13 @@ knitr::opts_chunk$set(echo = TRUE)
 * Name: Walter Yu
 * Date: Fall 2020
 
-This notebook is the contest entry to the [ASA Data Challenge Expo][00.00] to help citizens and communities response to COVID-19 with U.S. Census data analysis from the sources listed in the following sections.
+> This notebook is the contest entry to the [ASA Data Challenge Expo][00.00] to help citizens and communities response to COVID-19 with U.S. Census data analysis from the sources listed in the following sections.
 
 [00.00]: https://community.amstat.org/dataexpo/home
 
 ### Data Sources
 
-Both core and supplemental datasets from the [problem statement][00.01] were used for this analysis. Data was downloaded from portal websites as follows:
+> Both core and supplemental datasets from the [problem statement][00.01] were used for this analysis. Data was downloaded from portal websites as follows:
 
 1. U.S. Census Website: Advanced [search feature][00.02] was used to filter data in the following order: Surveys > Years > Geography > Topics
 2. U.S. Census COVID-19 Website: CA state data was downloaded from the [categorical dataset search page][00.03]
@@ -31,6 +31,8 @@ Both core and supplemental datasets from the [problem statement][00.01] were use
 [00.03]: https://covid19.census.gov/
 
 ### Core Datasets
+
+> Datasets of interest were identified from the U.S. Census data portal and extracted using the advanced search tool. Table ID numbers are listed for reference.
 
 1. 2019 American Community Survey (ACS) Single-Year Estimates - Language Spoken
 * Description: PLACE OF BIRTH BY LANGUAGE SPOKEN AT HOME AND ABILITY TO SPEAK ENGLISH IN THE UNITED STATES
@@ -98,6 +100,8 @@ Both core and supplemental datasets from the [problem statement][00.01] were use
 
 ### Supplemental Datasets
 
+> Datasets of interest were identified from the U.S. Census COVID-19 data portal under the categorical dataset section.
+
 1. U.S. Census - COVID-19 Demographic and Economic Resources
 * Dataset: [California Counties DP02 Social][02.00]
 
@@ -130,6 +134,8 @@ Both core and supplemental datasets from the [problem statement][00.01] were use
 
 ### Geospatial Datasets
 
+> Datasets of interest were identified from the U.S. Census COVID-19 data portal under the categorical dataset section.
+
 1. U.S. Census - COVID-19 Demographic and Economic Resources
 * Description: American Community Survey (ACS) about household income ranges and cutoffs and Poverty Status.
 * These are 5-year estimates shown by state and county boundaries.
@@ -153,7 +159,17 @@ Both core and supplemental datasets from the [problem statement][00.01] were use
 
 ## Part 2: Data Processing
 
-```{r echo=TRUE}
+> Core and supplemental datasets of interested were processed and joined as listed below prior to model fit and data visualization.
+
+This module completes the tasks listed below; however, all text output, warnings and messages are silenced to minimize report length so please check the code repository for details about implementation.
+
+1. Import csv files as dataframes
+2. Remove first record from each dataframe (header data)
+3. Import selected columns from full dataset
+4. Relabel selected columns from full dataset
+5. Join tables together into single dataframe
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 # data processing package
 library(dplyr)
