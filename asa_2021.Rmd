@@ -282,9 +282,9 @@ xwalk_acs19_lang = xwalk_acs19_lang %>%
     )
 
 # show table dim
-print("Show table dimensions below:")
-head(a19lang)
-dim(a19lang)
+# print("Show table dimensions below:")
+# head(xwalk_acs19_lang)
+# dim(xwalk_acs19_lang)
 
 # 2. 2019 American Community Survey (ACS) Single-Year Estimates - Household Income
 # * Table: [B19001]
@@ -309,28 +309,29 @@ dim(a19lang)
 # subset by columns
 # ref: https://www.statmethods.net/management/subset.html
 var_hh = c(
-  "GEO_ID",
-  "B19001_002E",
-  "B19001_003E",
-  "B19001_004E",
-  "B19001_005E",
-  "B19001_006E",
-  "B19001_007E",
-  "B19001_008E",
-  "B19001_009E",
-  "B19001_010E",
-  "B19001_011E",
-  "B19001_012E",
-  "B19001_013E",
-  "B19001_014E",
-  "B19001_015E",
-  "B19001_016E",
-  "B19001_017E")
-a19hh = acs19_hh_income[var_hh]
+    "GEO_ID",
+    "B19001_002E",
+    "B19001_003E",
+    "B19001_004E",
+    "B19001_005E",
+    "B19001_006E",
+    "B19001_007E",
+    "B19001_008E",
+    "B19001_009E",
+    "B19001_010E",
+    "B19001_011E",
+    "B19001_012E",
+    "B19001_013E",
+    "B19001_014E",
+    "B19001_015E",
+    "B19001_016E",
+    "B19001_017E"
+)
+xwalk_acs19_hh = acs19_hh_income[var_hh]
 
 # rename columns
 # ref: https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
-a19hh = a19hh %>%
+xwalk_acs19_hh = xwalk_acs19_hh %>%
   rename(
     hh_less_10k = B19001_002E,
     hh_10k = B19001_003E,
@@ -348,12 +349,12 @@ a19hh = a19hh %>%
     hh_125k = B19001_015E,
     hh_150k = B19001_016E,
     hh_200k = B19001_017E
-    )
+)
 
 # show table dim
-print("Show table dimensions below:")
-head(a19hh)
-dim(a19hh)
+# print("Show table dimensions below:")
+# head(xwalk_acs19_hh)
+# dim(xwalk_acs19_hh)
 
 # 3. 2019 American Community Survey (ACS) Single-Year Estimates - Median Household Income
 # * Table: [B19013]
@@ -365,20 +366,20 @@ dim(a19hh)
 var_hh_median = c(
 	"GEO_ID",
     "B19013_001E"
-	)
-a19hh_median = acs19_hh_income_median[var_hh_median]
+)
+xwalk_acs19_hh_median = acs19_hh_income_median[var_hh_median]
 
 # rename columns
 # ref: https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
-a19hh_median = a19hh_median %>%
+xwalk_acs19_hh_median = xwalk_acs19_hh_median %>%
   rename(
     hh_median = B19013_001E
     )
 
 # show table dim
-print("Show table dimensions below:")
-head(a19hh_median)
-dim(a19hh_median)
+# print("Show table dimensions below:")
+# head(xwalk_acs19_hh_median)
+# dim(xwalk_acs19_hh_median)
 
 # 4. 2019 American Community Survey (ACS) Single-Year Estimates - Poverty Status
 # * Table: [B17001]
@@ -392,21 +393,21 @@ var_poverty = c(
 	"GEO_ID",
     "B17001_002E",
     "B17001_031E"
-	)
-a19poverty = acs19_poverty[var_poverty]
+)
+xwalk_acs19_poverty = acs19_poverty[var_poverty]
 
 # rename columns
 # ref: https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
-a19poverty = a19poverty %>%
+xwalk_acs19_poverty = xwalk_acs19_poverty %>%
   rename(
 	poverty_below = B17001_002E,
 	poverty_above = B17001_031E,
     )
 
 # show table dim
-print("Show table dimensions below:")
-head(a19poverty)
-dim(a19poverty)
+# print("Show table dimensions below:")
+# head(xwalk_acs19_poverty)
+# dim(xwalk_acs19_poverty)
 
 # 5. 2019 American Community Survey (ACS) Single-Year Estimates - Housing Cost
 # * Table: [B25104]
@@ -448,12 +449,12 @@ var_housing = c(
     "B25104_015E",
     "B25104_016E",
     "B25104_017E"
-	)
-a19housing = acs19_housing[var_housing]
+)
+xwalk_acs19_housing = acs19_housing[var_housing]
 
 # rename columns
 # ref: https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
-a19housing = a19housing %>%
+xwalk_acs19_housing = xwalk_acs19_housing %>%
   rename(
     housing_less_100 = B25104_002E,
     housing_100 = B25104_003E,
@@ -471,12 +472,12 @@ a19housing = a19housing %>%
     housing_2500 = B25104_015E,
     housing_more_3000 = B25104_016E,
     housing_rent_free = B25104_017E
-    )
+)
 
 # show table dim
-print("Show table dimensions below:")
-head(a19housing)
-dim(a19housing)
+# print("Show table dimensions below:")
+# head(xwalk_acs19_housing)
+# dim(xwalk_acs19_housing)
 
 # 6. 2019 American Community Survey (ACS) Single-Year Estimates - Education Attainment
 # * Table: [B15003]
@@ -534,12 +535,12 @@ var_edu = c(
     "B15003_023E",
     "B15003_024E",
     "B15003_025E"
-	)
-a19edu = acs19_education[var_edu]
+)
+xwalk_acs19_edu = acs19_education[var_edu]
 
 # rename columns
 # ref: https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
-a19edu = a19edu %>%
+xwalk_acs19_edu = xwalk_acs19_edu %>%
   rename(
     edu_none = B15003_002E,
     edu_nursery = B15003_003E,
@@ -565,12 +566,12 @@ a19edu = a19edu %>%
     edu_master = B15003_023E,
     edu_professional = B15003_024E,
     edu_doctorate = B15003_025E
-    )
+)
 
 # show table dim
-print("Show table dimensions below:")
-head(a19edu)
-dim(a19edu)
+# print("Show table dimensions below:")
+# head(xwalk_acs19_edu)
+# dim(xwalk_acs19_edu)
 
 # 7. 2019 American Community Survey (ACS) Single-Year Estimates - Commute Mode
 # * Table: [B08101]
@@ -592,12 +593,12 @@ var_commute = c(
     "B08101_033E",
     "B08101_041E",
     "B08101_049E"
-	)
-a19commute = acs19_commute[var_commute]
+)
+xwalk_acs19_commute = acs19_commute[var_commute]
 
 # rename columns
 # ref: https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
-a19commute = a19commute %>%
+xwalk_acs19_commute = xwalk_acs19_commute %>%
   rename(
     commute_car = B08101_009E,
     commute_carpool = B08101_017E,
@@ -605,12 +606,12 @@ a19commute = a19commute %>%
     commute_walk = B08101_033E,
     commute_other = B08101_041E,
     commute_remote = B08101_049E
-    )
+)
 
 # show table dim
-print("Show table dimensions below:")
-head(a19commute)
-dim(a19commute)
+# print("Show table dimensions below:")
+# head(xwalk_acs19_commute)
+# dim(xwalk_acs19_commute)
 
 # 8. 2019 American Community Survey (ACS) Single-Year Estimates - Race
 # * Table: [B02001]
@@ -634,12 +635,175 @@ var_race = c(
     "B02001_006E",
     "B02001_007E",
     "B02001_008E"
-    )
-a19race = acs19_race[var_race]
+)
+xwalk_acs19_race = acs19_race[var_race]
 
 # show table dim
-print("Show table dimensions below:")
-head(a19race)
-dim(a19race)
+# print("Show table dimensions below:")
+# head(xwalk_acs19_race)
+# dim(xwalk_acs19_race)
+
+# inner table joins based on geo_id, then merge into single table
+# note: all tables same dim except language (1 county short)
+# ref: https://mikoontz.github.io/data-carpentry-week/lesson_joins.html
+join_acs19_hhm_hh = inner_join(
+    xwalk_acs19_hh_median,
+    xwalk_acs19_hh,
+    by="GEO_ID"
+)
+join_acs19_pov_hou = inner_join(
+    xwalk_acs19_poverty,
+    xwalk_acs19_housing,
+    by="GEO_ID"
+)
+join_acs19_edu_com = inner_join(
+    xwalk_acs19_edu,
+    xwalk_acs19_commute,
+    by="GEO_ID"
+)
+
+# left join for language since it is short by 1 county
+# ref: https://mikoontz.github.io/data-carpentry-week/lesson_joins.html
+join_acs19_race_language = left_join(
+    xwalk_acs19_race,
+    xwalk_acs19_lang,
+    by="GEO_ID"
+)
+
+# verify that tables joined correctly
+# print("Show table dimensions below:")
+# dim(join_acs19_hhm_hh)
+# dim(join_acs19_pov_hou)
+# dim(join_acs19_edu_com)
+# dim(join_acs19_race_language)
+
+# inner table joins based on geo_id, then merge into single table
+join_acs19_hhm_hou = inner_join(
+    join_acs19_hhm_hh,
+    join_acs19_pov_hou,
+    by="GEO_ID"
+)
+join_acs19_edu_race = inner_join(
+    join_acs19_edu_com,
+    join_acs19_race_language,
+    by="GEO_ID"
+)
+
+# verify that tables joined correctly
+# print("Show table dimensions below:")
+# dim(join_acs19_hhm_hou)
+# dim(join_acs19_edu_race)
+
+# inner table joins based on geo_id, then merge into single table
+acs19 = inner_join(
+    join_acs19_hhm_hou,
+    join_acs19_edu_race,
+    by="GEO_ID"
+)
+
+# verify that tables joined correctly
+# print("Show table dimensions below:")
+# dim(acs19)
+# str(acs19)
+
+# remove geo_id for regression model fit
+# ref: https://stackoverflow.com/questions/5234117/how-to-drop-columns-by-name-in-a-data-frame
+acs19_noid = subset(acs19, select=-c(GEO_ID))
+
+# write/read dataframe to remove factor levels
+write.csv(acs19_noid, "data/acs19_noid.csv")
+acs19_nofactor = read.csv("data/acs19_noid.csv")
+
+# verify that tables joined correctly
+# print("Show table dimensions below:")
+# dim(acs19_nofactor)
+# str(acs19_nofactor)
+
+```
+
+## Part 3: Model Fit
+
+```{r echo=TRUE}
+
+# process data features for model fit
+# acs19 = mutate(acs19,
+#                # recenter pp so that intercept crosses at origin
+#                # pp = (PetrolPrice - mean(PetrolPrice)) / sd(PetrolPrice),
+#                # relevel factor into four brackets
+#                # ppf = as.factor((pp <= -1.5) + (pp <= 0) + (pp <= 1.5) + (pp < Inf)),
+#                # scale kms so that it is in proportion to other vars
+#                # mm = kms / 1000,
+#                hh_median_1k = hh_median / 1000,
+#                poverty_below_1k = poverty_below / 1000
+#                # recenter mm so that intercept crosses at origin
+#                # mmc = mm - mean(mm)
+#                )
+
+# linear regression model fit - poverty
+print("Fit model and output summary:")
+fit_acs19_poverty <- lm(hh_median ~ poverty_below, data=acs19_nofactor)
+round(summary(fit_acs19_poverty)$coeff, 4)
+
+# linear regression model fit - housing cost
+fit_acs19_housing_3000 <- lm(hh_median ~ housing_more_3000,
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_housing_3000)$coeff, 6)
+
+fit_acs19_housing_2500 <- lm(hh_median ~ housing_more_3000 +
+    housing_2500,
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_housing_2500)$coeff, 6)
+
+fit_acs19_housing_2000 <- lm(hh_median ~ housing_more_3000 +
+    housing_2500 +
+    housing_2000,
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_housing_2000)$coeff, 6)
+
+# anova analysis to identify change
+anova(
+    fit_acs19_housing_3000,
+    fit_acs19_housing_2500,
+    fit_acs19_housing_2000
+)
+
+# linear regression model fit - education attainment
+fit_acs19_edu_doctorate <- lm(hh_median ~ edu_doctorate, data=acs19_nofactor)
+round(summary(fit_acs19_edu_doctorate)$coeff, 6)
+
+fit_acs19_edu_professional <- lm(hh_median ~ edu_doctorate +
+    edu_professional,
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_edu_professional)$coeff, 6)
+
+fit_acs19_edu_master <- lm(hh_median ~ edu_doctorate +
+    edu_professional +
+    edu_master,
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_edu_master)$coeff, 6)
+
+fit_acs19_edu_bachelor <- lm(hh_median ~ edu_doctorate +
+    edu_professional +
+    edu_master +
+    edu_bachelor,
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_edu_bachelor)$coeff, 6)
+
+# anova analysis to identify change
+anova(
+    fit_acs19_edu_doctorate,
+    fit_acs19_edu_professional,
+    fit_acs19_edu_master,
+    fit_acs19_edu_bachelor
+)
+
+# preview data
+# head(acs19_noid)
 
 ```
