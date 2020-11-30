@@ -949,12 +949,80 @@ fit_acs19_housing_2000 <- lm(hh_median ~ housing_more_3000 +
 )
 round(summary(fit_acs19_housing_2000)$coeff, 6)
 
+# model fit summary
+summary(fit_acs19_housing_2000)
+
 # anova analysis to identify change
 anova(
     fit_acs19_housing_3000,
     fit_acs19_housing_2500,
     fit_acs19_housing_2000
 )
+
+# calculate correlation
+col_housing = c(
+    "housing_more_3000",
+    "housing_2500",
+    "housing_2000"
+)
+cor(acs19_nofactor$hh_median, acs19_nofactor[col_housing])
+
+# visualize income and transit variables
+# ref: https://www.theanalysisfactor.com/linear-models-r-plotting-regression-lines/
+plot(hh_median ~ as.numeric(housing_more_3000),
+    main="Median Household Income and Housing Cost",
+    xlab="Housing Cost Over $3k/Month (Count)",
+    ylab="Income (Dollars)",
+    pch=16,
+    col="blue",
+    data=acs19_nofactor
+)
+
+# trend line plot
+abline(
+    fit_acs19_housing_3000,
+    col="red"
+)
+
+# diagnostic plot
+par(mfrow=c(2,2))
+plot(fit_acs19_housing_3000)
+
+```
+
+### 2019 ACS - Education Attainment
+
+> Education attainment as a whole has a good relationship with median household income as verified with the low p-value. In particular, education attainment including and beyond a bachelors degree was more closely associated with median household income.
+
+This finding implies that certain higher education attainment is associated with median household income. When variables were added the model, most maintained relatively lower p-values.
+
+```{r echo=TRUE}
+
+# features:
+# B15003_002E: No schooling completed
+# B15003_003E: Nursery school
+# B15003_004E: Kindergarten
+# B15003_005E: 1st grade
+# B15003_006E: 2nd grade
+# B15003_007E: 3rd grade
+# B15003_008E: 4th grade
+# B15003_009E: 5th grade
+# B15003_010E: 6th grade
+# B15003_011E: 7th grade
+# B15003_012E: 8th grade
+# B15003_013E: 9th grade
+# B15003_014E: 10th grade
+# B15003_015E: 11th grade
+# B15003_016E: 12th grade, no diploma
+# B15003_017E: Regular high school diploma
+# B15003_018E: GED or alternative credential
+# B15003_019E: Some college, less than 1 year
+# B15003_020E: Some college, 1 or more years, no degree
+# B15003_021E: Associate's degree
+# B15003_022E: Bachelor's degree
+# B15003_023E: Master's degree
+# B15003_024E: Professional school degree
+# B15003_025E: Doctorate degree
 
 # linear regression model fit - education attainment
 fit_acs19_edu_doctorate <- lm(hh_median ~ edu_doctorate, data=acs19_nofactor)
@@ -981,6 +1049,9 @@ fit_acs19_edu_bachelor <- lm(hh_median ~ edu_doctorate +
 )
 round(summary(fit_acs19_edu_bachelor)$coeff, 6)
 
+# model fit summary
+summary(fit_acs19_edu_bachelor)
+
 # anova analysis to identify change
 anova(
     fit_acs19_edu_doctorate,
@@ -989,7 +1060,182 @@ anova(
     fit_acs19_edu_bachelor
 )
 
-# preview data
-# head(acs19_noid)
+# calculate correlation
+col_edu = c(
+    "edu_doctorate",
+    "edu_professional",
+    "edu_master",
+    "edu_bachelor"
+)
+cor(acs19_nofactor$hh_median, acs19_nofactor[col_edu])
+
+# visualize income and transit variables
+# ref: https://www.theanalysisfactor.com/linear-models-r-plotting-regression-lines/
+plot(hh_median ~ as.numeric(edu_doctorate),
+    main="Median Household Income and Education Attainment",
+    xlab="Education Attainment of Doctorate Degree (Count)",
+    ylab="Income (Dollars)",
+    pch=16,
+    col="blue",
+    data=acs19_nofactor
+)
+
+# trend line plot
+abline(
+    fit_acs19_edu_doctorate,
+    col="red"
+)
+
+# diagnostic plot
+par(mfrow=c(2,2))
+plot(fit_acs19_edu_doctorate)
 
 ```
+
+### 2019 ACS - Race
+
+> Race as a whole has a good relationship with median household income as verified with the low p-value. In particular, "American Indian", "Alaska Native alone" and "Asian alone" features were more closely associated with median household income.
+
+```{r echo=TRUE}
+
+# features:
+# B02001_002E: White alone
+# B02001_003E: Black or African American alone
+# B02001_004E: American Indian and Alaska Native alone
+# B02001_005E: Asian alone
+# B02001_006E: Native Hawaiian and Other Pacific Islander alone
+# B02001_007E: Some other race alone
+# B02001_008E: Two or more races
+
+# linear regression
+fit_acs19_race1 <- lm(
+    hh_median ~ as.numeric(B02001_002E),
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_race1)$coeff, 6)
+
+fit_acs19_race2 <- lm(
+    hh_median ~ as.numeric(B02001_002E) +
+    as.numeric(B02001_003E),
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_race2)$coeff, 6)
+
+fit_acs19_race3 <- lm(
+    hh_median ~ as.numeric(B02001_002E) +
+    as.numeric(B02001_003E) +
+    as.numeric(B02001_004E),
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_race3)$coeff, 6)
+
+fit_acs19_race_all <- lm(
+    hh_median ~ as.numeric(B02001_002E) +
+    as.numeric(B02001_003E) +
+    as.numeric(B02001_004E) +
+    as.numeric(B02001_005E) +
+    as.numeric(B02001_006E) +
+    as.numeric(B02001_007E) +
+    as.numeric(B02001_008E),
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_race_all)$coeff, 6)
+
+# model fit summary
+summary(fit_acs19_race_all)
+
+# diagnostic plot
+par(mfrow=c(2,2))
+plot(fit_acs19_race_all)
+
+```
+
+### 2019 ACS - Poverty Level
+
+> Poverty level as a whole has a good relationship with median household income as verified with the low p-value. However when either of the two features are isolated, then their fit is poor so poverty is not particularly useful for the analysis.
+
+The poor fit is likely due to the large size of each group (above or below poverty income level) which basically divides the dataset into two halves and results in poor fit due to large variance of each subset. Poverty level is intuitively a good indicator of median household income; however, the feature is not granular enough to use for additional analysis.
+
+```{r echo=TRUE}
+
+# features:
+# B17001_002E: Income in the past 12 months below poverty level
+# B17001_031E: Income in the past 12 months at or above poverty level
+
+# linear regression model fit - poverty below
+fit_acs19_poverty_above <- lm(
+    hh_median ~ poverty_above,
+    data=acs19_nofactor
+)
+summary(fit_acs19_poverty_above)
+
+# linear regression model fit - poverty below + above
+fit_acs19_poverty_all <- lm(
+    hh_median ~ poverty_below +
+    poverty_above,
+    data=acs19_nofactor
+)
+summary(fit_acs19_poverty_all)
+
+# diagnostic plot
+par(mfrow=c(2,2))
+plot(fit_acs19_poverty_all)
+
+```
+
+### 2019 ACS - Model Refinement
+
+> Improve linear model with best features and analyze results.
+
+Model fit was improved by including the best attributes from the data analysis which improved the model as verified with a lower p-value and higher r-squared value as compared to the other models with fewer features.
+
+```{r echo=TRUE}
+
+# fit best features to evaluate their importance
+fit_acs19_best_features = lm(hh_median ~ as.numeric(housing_more_3000) +
+    as.numeric(commute_transit) +
+    as.numeric(commute_remote) +
+    as.numeric(commute_carpool) +
+    as.numeric(edu_doctorate) +
+    as.numeric(edu_professional) +
+    as.numeric(edu_master) +
+    as.numeric(edu_bachelor),
+    data=acs19_nofactor
+)
+summary(fit_acs19_best_features)
+
+# diagnostic plot
+par(mfrow=c(2,2))
+plot(fit_acs19_poverty_all)
+
+```
+
+### NCHS COVID-19 Data
+
+> Import CDC COVID-19 data and compare with ACS data.
+
+```{r echo=TRUE}
+
+```
+
+## Part 4: Data Visualization
+
+### Summary Plots
+
+> Provide summary plots based on data analysis results.
+
+```{r echo=TRUE}
+
+```
+
+## Part 5: Recommendations
+
+### Key Findings
+
+> Provide recommendations based on data analysis results.
+
+Some key findings are as follows:
+
+1. Education attainment, commute mode and housing cost had good relationship with median household income.
+2. Some features have a wide variance and outlier/high leverage points.
+3. Combining best features resulted in better model fit (i.e. lower p-value and higher adjusted r-squared value).
