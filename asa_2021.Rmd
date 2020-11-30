@@ -777,28 +777,158 @@ acs19_nofactor = read.csv("data/acs19_noid.csv")
 
 ```
 
-## Part 3: Model Fit
+## Part 3: Data Analysis
+
+### Methodology
+
+> Processed data was used to fit a linear regression model to identify key attributes associated with disadvantaged communities and those communities most impacted by the pandemic.  
+
+Data analysis was conducted as follows:
+
+1. Fit 2019 ACS data features into separate linear regression models to identify which had the best fit and association with median household income.
+2. Conduct coefficient interpretation and model diagnostics to refine models.
+3. Identify communities with lowest median income and highest COVID-19 death counts.
+
+### 2019 ACS - Commute Mode
+
+> Commute mode as a whole has a good relationship with median household income as verified with the low p-value. Features were split into two groups for analysis: car-based modes and transit-based modes.
+
+Features within each group were fit individually into their own model. Carpool had a good fit in the car-based modes. Transit/remote work had good fits with transit-based modes. This finding implies that certain commute modes (i.e. carpool, transit and remote work) have a better relationship to income than other ones (i.e. walking).
 
 ```{r echo=TRUE}
 
-# process data features for model fit
-# acs19 = mutate(acs19,
-#                # recenter pp so that intercept crosses at origin
-#                # pp = (PetrolPrice - mean(PetrolPrice)) / sd(PetrolPrice),
-#                # relevel factor into four brackets
-#                # ppf = as.factor((pp <= -1.5) + (pp <= 0) + (pp <= 1.5) + (pp < Inf)),
-#                # scale kms so that it is in proportion to other vars
-#                # mm = kms / 1000,
-#                hh_median_1k = hh_median / 1000,
-#                poverty_below_1k = poverty_below / 1000
-#                # recenter mm so that intercept crosses at origin
-#                # mmc = mm - mean(mm)
-#                )
+# features:
+# B08101_009E: Car, truck, or van - drove alone
+# B08101_017E: Car, truck, or van - carpooled
+# B08101_025E: Public transportation (excluding taxicab)
+# B08101_033E: Walked
+# B08101_041E: Taxicab, motorcycle, bicycle, or other means
+# B08101_049E: Worked from home
 
-# linear regression model fit - poverty
-print("Fit model and output summary:")
-fit_acs19_poverty <- lm(hh_median ~ poverty_below, data=acs19_nofactor)
-round(summary(fit_acs19_poverty)$coeff, 4)
+# model fit for transit-based commute modes
+# linear regression - transit
+fit_acs19_commute_transit <- lm(
+    hh_median ~ as.numeric(commute_transit),
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_commute_transit)$coeff, 6)
+
+# linear regression - transit + walk
+fit_acs19_commute_transit_walk <- lm(
+    hh_median ~ as.numeric(commute_transit) +
+    as.numeric(commute_walk),
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_commute_transit_walk)$coeff, 6)
+
+# linear regression - transit + walk + remote
+fit_acs19_commute_transit_remote <- lm(
+    hh_median ~ as.numeric(commute_transit) +
+    as.numeric(commute_walk) +
+    as.numeric(commute_remote),
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_commute_transit_remote)$coeff, 6)
+
+# variance analysis
+anova(
+    fit_acs19_commute_transit,
+    fit_acs19_commute_transit_walk,
+    fit_acs19_commute_transit_remote
+)
+
+# model fit for car-based commute modes
+# linear regression - car
+fit_acs19_commute_car <- lm(
+    hh_median ~ as.numeric(commute_car),
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_commute_car)$coeff, 6)
+
+# linear regression - car + carpool
+fit_acs19_commute_car_carpool <- lm(
+    hh_median ~ as.numeric(commute_car) +
+    as.numeric(commute_carpool),
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_commute_car_carpool)$coeff, 6)
+
+# linear regression - car + carpool + other
+fit_acs19_commute_car_other <- lm(
+    hh_median ~ as.numeric(commute_car) +
+    as.numeric(commute_carpool) +
+    as.numeric(commute_other),
+    data=acs19_nofactor
+)
+round(summary(fit_acs19_commute_car_other)$coeff, 6)
+
+# variance analysis
+anova(
+    fit_acs19_commute_car,
+    fit_acs19_commute_car_carpool,
+    fit_acs19_commute_car_other
+)
+
+# visualize income and transit variables
+# ref: https://www.theanalysisfactor.com/linear-models-r-plotting-regression-lines/
+plot(hh_median ~ as.numeric(commute_transit),
+    main="Median Household Income and Transit Variables",
+    xlab="Transit (Count in Thousands)",
+    ylab="Income (Dollars)",
+    pch=16,
+    col="blue",
+    data=acs19_nofactor
+)
+
+# linear regression - all
+fit_acs19_commute_all <- lm(
+    hh_median ~ as.numeric(commute_transit) +
+    as.numeric(commute_walk) +
+    as.numeric(commute_remote) +
+    as.numeric(commute_car) +
+    as.numeric(commute_carpool) +
+    as.numeric(commute_other),
+    data=acs19_nofactor
+)
+summary(fit_acs19_commute_all)
+
+# trend line plot
+abline(
+    fit_acs19_commute_transit,
+    col="red"
+)
+
+# diagnostic plot
+par(mfrow=c(2,2))
+plot(fit_acs19_commute_all)
+
+```
+
+### 2019 ACS - Housing Cost
+
+> Housing cost as a whole has a good relationship with median household income as verified with the low p-value. In particular, higher monthly housing costs were more closely associated with median household income.
+
+This finding implies that certain higher housing cost is associated with median household income. However, lower housing cost features were not analyzed due to their large number, values with little or not rent and not being adjusted for cost of living (i.e. some counties may have significantly lower rents). As a result, only the higher housing cost features were analyzed.
+
+```{r echo=TRUE}
+
+# features:
+# B25104_002E: Less than $100
+# B25104_003E: 100 to $199
+# B25104_004E: 200 to $299
+# B25104_005E: 300 to $399
+# B25104_006E: 400 to $499
+# B25104_007E: 500 to $599
+# B25104_008E: 600 to $699
+# B25104_009E: 700 to $799
+# B25104_010E: 800 to $899
+# B25104_011E: 900 to $999
+# B25104_012E: 1,000 to $1,499
+# B25104_013E: 1,500 to $1,999
+# B25104_014E: 2,000 to $2,499
+# B25104_015E: 2,500 to $2,999
+# B25104_016E: 3,000 or more
+# B25104_017E: No cash rent
 
 # linear regression model fit - housing cost
 fit_acs19_housing_3000 <- lm(hh_median ~ housing_more_3000,
