@@ -1221,6 +1221,14 @@ plot(fit_acs19_poverty_all)
 
 ```
 
+### 2019 ACS - Model Refinement (Continued)
+
+> Improve linear model with best features and analyze results.
+
+1. PCA and Variance Plot
+2. Logistic Regression for Median Income and Location
+3. Diagnostics for Logistic Regression
+
 ### NCHS COVID-19 Data
 
 > Import CDC COVID-19 data and compare with ACS data.
@@ -1230,6 +1238,9 @@ plot(fit_acs19_poverty_all)
 ```
 
 ## Part 4: Data Visualization
+
+1. Contingency Tables
+2. Box Plot for All Counties
 
 ### Summary Plots
 
