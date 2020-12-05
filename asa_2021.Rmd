@@ -843,24 +843,24 @@ anova(
 # model fit for car-based commute modes
 # linear regression - car
 fit_acs19_commute_car <- lm(
-    hh_median ~ as.numeric(commute_car),
+    log(hh_median) ~ log(as.numeric(commute_car)),
     data=acs19_nofactor
 )
 round(summary(fit_acs19_commute_car)$coeff, 6)
 
 # linear regression - car + carpool
 fit_acs19_commute_car_carpool <- lm(
-    hh_median ~ as.numeric(commute_car) +
-    as.numeric(commute_carpool),
+    log(hh_median) ~ log(as.numeric(commute_car)) +
+    log(as.numeric(commute_carpool)),
     data=acs19_nofactor
 )
 round(summary(fit_acs19_commute_car_carpool)$coeff, 6)
 
 # linear regression - car + carpool + other
 fit_acs19_commute_car_other <- lm(
-    hh_median ~ as.numeric(commute_car) +
-    as.numeric(commute_carpool) +
-    as.numeric(commute_other),
+    log(hh_median) ~ log(as.numeric(commute_car)) +
+    log(as.numeric(commute_carpool)) +
+    log(as.numeric(commute_other)),
     data=acs19_nofactor
 )
 round(summary(fit_acs19_commute_car_other)$coeff, 6)
