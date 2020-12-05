@@ -874,7 +874,7 @@ anova(
 
 # visualize income and transit variables
 # ref: https://www.theanalysisfactor.com/linear-models-r-plotting-regression-lines/
-plot(hh_median ~ as.numeric(commute_transit),
+plot(log(hh_median) ~ log(as.numeric(commute_transit)),
     main="Median Household Income and Transit Variables",
     xlab="Transit (Count in Thousands)",
     ylab="Income (Dollars)",
