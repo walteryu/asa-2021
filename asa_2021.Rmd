@@ -807,25 +807,28 @@ Features within each group were fit individually into their own model. Carpool h
 
 # model fit for transit-based commute modes
 # linear regression - transit
+
+# note: fit to log scale
+# source: https://stats.stackexchange.com/questions/176595/simple-log-regression-model-in-r
 fit_acs19_commute_transit <- lm(
-    hh_median ~ as.numeric(commute_transit),
+    log(hh_median) ~ log(as.numeric(commute_transit)),
     data=acs19_nofactor
 )
 round(summary(fit_acs19_commute_transit)$coeff, 6)
 
 # linear regression - transit + walk
 fit_acs19_commute_transit_walk <- lm(
-    hh_median ~ as.numeric(commute_transit) +
-    as.numeric(commute_walk),
+    log(hh_median) ~ log(as.numeric(commute_transit)) +
+    log(as.numeric(commute_walk)),
     data=acs19_nofactor
 )
 round(summary(fit_acs19_commute_transit_walk)$coeff, 6)
 
 # linear regression - transit + walk + remote
 fit_acs19_commute_transit_remote <- lm(
-    hh_median ~ as.numeric(commute_transit) +
-    as.numeric(commute_walk) +
-    as.numeric(commute_remote),
+    log(hh_median) ~ log(as.numeric(commute_transit)) +
+    log(as.numeric(commute_walk)) +
+    log(as.numeric(commute_remote)),
     data=acs19_nofactor
 )
 round(summary(fit_acs19_commute_transit_remote)$coeff, 6)
