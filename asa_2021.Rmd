@@ -885,12 +885,12 @@ plot(log(hh_median) ~ log(as.numeric(commute_transit)),
 
 # linear regression - all
 fit_acs19_commute_all <- lm(
-    hh_median ~ as.numeric(commute_transit) +
-    as.numeric(commute_walk) +
-    as.numeric(commute_remote) +
-    as.numeric(commute_car) +
-    as.numeric(commute_carpool) +
-    as.numeric(commute_other),
+    log(hh_median) ~ log(as.numeric(commute_transit)) +
+    log(as.numeric(commute_walk)) +
+    log(as.numeric(commute_remote)) +
+    log(as.numeric(commute_car)) +
+    log(as.numeric(commute_carpool)) +
+    log(as.numeric(commute_other)),
     data=acs19_nofactor
 )
 summary(fit_acs19_commute_all)
