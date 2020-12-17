@@ -1242,7 +1242,8 @@ plot(fit_acs19_poverty_all)
 ## Part 4: Data Visualization
 
 1. Contingency Tables
-2. Box Plot for All Counties
+2. Histogram to Show Skew
+3. Box Plot for All Counties
 
 ### Summary Plots
 
