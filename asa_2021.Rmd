@@ -1118,34 +1118,36 @@ plot(fit_acs19_edu_doctorate)
 # note: fit to log scale
 # source: https://stats.stackexchange.com/questions/176595/simple-log-regression-model-in-r
 fit_acs19_race1 <- lm(
-    hh_median ~ as.numeric(B02001_002E),
+    log(hh_median) ~ log(as.numeric(B02001_002E)),
     data=acs19_nofactor
 )
 round(summary(fit_acs19_race1)$coeff, 6)
 
 fit_acs19_race2 <- lm(
-    hh_median ~ as.numeric(B02001_002E) +
-    as.numeric(B02001_003E),
+    log(hh_median) ~ log(as.numeric(B02001_002E)) +
+    log(as.numeric(B02001_003E)),
     data=acs19_nofactor
 )
 round(summary(fit_acs19_race2)$coeff, 6)
 
 fit_acs19_race3 <- lm(
-    hh_median ~ as.numeric(B02001_002E) +
-    as.numeric(B02001_003E) +
-    as.numeric(B02001_004E),
+    log(hh_median ) ~ log(as.numeric(B02001_002E)) +
+    log(as.numeric(B02001_003E)) +
+    log(as.numeric(B02001_004E)),
     data=acs19_nofactor
 )
 round(summary(fit_acs19_race3)$coeff, 6)
 
 fit_acs19_race_all <- lm(
-    hh_median ~ as.numeric(B02001_002E) +
-    as.numeric(B02001_003E) +
-    as.numeric(B02001_004E) +
-    as.numeric(B02001_005E) +
-    as.numeric(B02001_006E) +
-    as.numeric(B02001_007E) +
-    as.numeric(B02001_008E),
+    log(hh_median) ~ log(as.numeric(B02001_002E)) +
+    log(as.numeric(B02001_003E)) +
+    log(as.numeric(B02001_004E)) +
+    log(as.numeric(B02001_005E)) +
+
+    # leave out 06e due to log error
+    # (as.numeric(B02001_006E)) +
+    log(as.numeric(B02001_007E)) +
+    log(as.numeric(B02001_008E)),
     data=acs19_nofactor
 )
 round(summary(fit_acs19_race_all)$coeff, 6)
@@ -1175,15 +1177,15 @@ The poor fit is likely due to the large size of each group (above or below pover
 # note: fit to log scale
 # source: https://stats.stackexchange.com/questions/176595/simple-log-regression-model-in-r
 fit_acs19_poverty_above <- lm(
-    hh_median ~ poverty_above,
+    log(hh_median) ~ log(poverty_above),
     data=acs19_nofactor
 )
 summary(fit_acs19_poverty_above)
 
 # linear regression model fit - poverty below + above
 fit_acs19_poverty_all <- lm(
-    hh_median ~ poverty_below +
-    poverty_above,
+    log(hh_median) ~ log(poverty_below) +
+    log(poverty_above),
     data=acs19_nofactor
 )
 summary(fit_acs19_poverty_all)
