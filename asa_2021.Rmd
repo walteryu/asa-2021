@@ -1032,26 +1032,26 @@ This finding implies that certain higher education attainment is associated with
 # linear regression model fit - education attainment
 # note: fit to log scale
 # source: https://stats.stackexchange.com/questions/176595/simple-log-regression-model-in-r
-fit_acs19_edu_doctorate <- lm(hh_median ~ edu_doctorate, data=acs19_nofactor)
+fit_acs19_edu_doctorate <- lm(log(hh_median) ~ log(edu_doctorate), data=acs19_nofactor)
 round(summary(fit_acs19_edu_doctorate)$coeff, 6)
 
-fit_acs19_edu_professional <- lm(hh_median ~ edu_doctorate +
-    edu_professional,
+fit_acs19_edu_professional <- lm(log(hh_median) ~ log(edu_doctorate) +
+    log(edu_professional),
     data=acs19_nofactor
 )
 round(summary(fit_acs19_edu_professional)$coeff, 6)
 
-fit_acs19_edu_master <- lm(hh_median ~ edu_doctorate +
-    edu_professional +
-    edu_master,
+fit_acs19_edu_master <- lm(log(hh_median) ~ log(edu_doctorate) +
+    log(edu_professional) +
+    log(edu_master),
     data=acs19_nofactor
 )
 round(summary(fit_acs19_edu_master)$coeff, 6)
 
-fit_acs19_edu_bachelor <- lm(hh_median ~ edu_doctorate +
-    edu_professional +
-    edu_master +
-    edu_bachelor,
+fit_acs19_edu_bachelor <- lm(log(hh_median) ~ log(edu_doctorate) +
+    log(edu_professional) +
+    log(edu_master) +
+    log(edu_bachelor),
     data=acs19_nofactor
 )
 round(summary(fit_acs19_edu_bachelor)$coeff, 6)
@@ -1078,7 +1078,7 @@ cor(acs19_nofactor$hh_median, acs19_nofactor[col_edu])
 
 # visualize income and transit variables
 # ref: https://www.theanalysisfactor.com/linear-models-r-plotting-regression-lines/
-plot(hh_median ~ as.numeric(edu_doctorate),
+plot(log(hh_median ) ~ log(as.numeric(edu_doctorate)),
     main="Median Household Income and Education Attainment",
     xlab="Education Attainment of Doctorate Degree (Count)",
     ylab="Income (Dollars)",
