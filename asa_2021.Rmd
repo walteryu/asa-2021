@@ -1205,14 +1205,14 @@ Model fit was improved by including the best attributes from the data analysis w
 ```{r echo=TRUE}
 
 # fit best features to evaluate their importance
-fit_acs19_best_features = lm(hh_median ~ as.numeric(housing_more_3000) +
-    as.numeric(commute_transit) +
-    as.numeric(commute_remote) +
-    as.numeric(commute_carpool) +
-    as.numeric(edu_doctorate) +
-    as.numeric(edu_professional) +
-    as.numeric(edu_master) +
-    as.numeric(edu_bachelor),
+fit_acs19_best_features = lm(log(hh_median) ~ log(as.numeric(housing_more_3000)) +
+    log(as.numeric(commute_transit)) +
+    log(as.numeric(commute_remote)) +
+    log(as.numeric(commute_carpool)) +
+    log(as.numeric(edu_doctorate)) +
+    log(as.numeric(edu_professional)) +
+    log(as.numeric(edu_master)) +
+    log(as.numeric(edu_bachelor)),
     data=acs19_nofactor
 )
 summary(fit_acs19_best_features)
