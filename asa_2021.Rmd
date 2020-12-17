@@ -974,7 +974,7 @@ cor(acs19_nofactor$hh_median, acs19_nofactor[col_housing])
 
 # visualize income and transit variables
 # ref: https://www.theanalysisfactor.com/linear-models-r-plotting-regression-lines/
-plot(hh_median ~ as.numeric(housing_more_3000),
+plot(log(hh_median)~ log(as.numeric(housing_more_3000)),
     main="Median Household Income and Housing Cost",
     xlab="Housing Cost Over $3k/Month (Count)",
     ylab="Income (Dollars)",
