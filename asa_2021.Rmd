@@ -410,7 +410,7 @@ xwalk_acs19_hh = xwalk_acs19_hh %>%
     hh_125k = B19001_015E,
     hh_150k = B19001_016E,
     hh_200k = B19001_017E
-)
+    )
 
 # show table dim
 # print("Show table dimensions below:")
@@ -423,7 +423,7 @@ xwalk_acs19_hh = xwalk_acs19_hh %>%
 #   B19013_001E: Estimate!!Median household income in the past 12 months
 
 # subset by columns
-# ref: https://www.statmethods.net/management/subset.html
+# https://www.statmethods.net/management/subset.html
 var_hh_median = c(
 	"GEO_ID",
     "B19013_001E"
@@ -431,7 +431,7 @@ var_hh_median = c(
 xwalk_acs19_hh_median = acs19_hh_income_median[var_hh_median]
 
 # rename columns
-# ref: https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
+# https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
 xwalk_acs19_hh_median = xwalk_acs19_hh_median %>%
   rename(
     hh_median = B19013_001E
@@ -449,7 +449,7 @@ xwalk_acs19_hh_median = xwalk_acs19_hh_median %>%
 # B17001_031E: Estimate!!Total:!!Income in the past 12 months at or above poverty level:
 
 # subset by columns
-# ref: https://www.statmethods.net/management/subset.html
+# https://www.statmethods.net/management/subset.html
 var_poverty = c(
 	"GEO_ID",
     "B17001_002E",
@@ -458,7 +458,7 @@ var_poverty = c(
 xwalk_acs19_poverty = acs19_poverty[var_poverty]
 
 # rename columns
-# ref: https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
+# https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
 xwalk_acs19_poverty = xwalk_acs19_poverty %>%
   rename(
 	poverty_below = B17001_002E,
@@ -491,7 +491,7 @@ xwalk_acs19_poverty = xwalk_acs19_poverty %>%
 #   B25104_017E: Estimate!!Total:!!No cash rent
 
 # subset by columns
-# ref: https://www.statmethods.net/management/subset.html
+# https://www.statmethods.net/management/subset.html
 var_housing = c(
 	"GEO_ID",
     "B25104_002E",
@@ -514,7 +514,7 @@ var_housing = c(
 xwalk_acs19_housing = acs19_housing[var_housing]
 
 # rename columns
-# ref: https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
+# https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
 xwalk_acs19_housing = xwalk_acs19_housing %>%
   rename(
     housing_less_100 = B25104_002E,
@@ -533,7 +533,7 @@ xwalk_acs19_housing = xwalk_acs19_housing %>%
     housing_2500 = B25104_015E,
     housing_more_3000 = B25104_016E,
     housing_rent_free = B25104_017E
-)
+    )
 
 # show table dim
 # print("Show table dimensions below:")
@@ -569,7 +569,7 @@ xwalk_acs19_housing = xwalk_acs19_housing %>%
 #   B15003_025E: Estimate!!Total:!!Doctorate degree
 
 # subset by columns
-# ref: https://www.statmethods.net/management/subset.html
+# https://www.statmethods.net/management/subset.html
 var_edu = c(
 	"GEO_ID",
     "B15003_002E",
@@ -600,7 +600,7 @@ var_edu = c(
 xwalk_acs19_edu = acs19_education[var_edu]
 
 # rename columns
-# ref: https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
+# https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
 xwalk_acs19_edu = xwalk_acs19_edu %>%
   rename(
     edu_none = B15003_002E,
@@ -627,7 +627,7 @@ xwalk_acs19_edu = xwalk_acs19_edu %>%
     edu_master = B15003_023E,
     edu_professional = B15003_024E,
     edu_doctorate = B15003_025E
-)
+    )
 
 # show table dim
 # print("Show table dimensions below:")
@@ -645,7 +645,7 @@ xwalk_acs19_edu = xwalk_acs19_edu %>%
 #   B08101_049E: Estimate!!Total:!!Worked from home
 
 # subset by columns
-# ref: https://www.statmethods.net/management/subset.html
+# https://www.statmethods.net/management/subset.html
 var_commute = c(
 	"GEO_ID",
     "B08101_009E",
@@ -658,7 +658,7 @@ var_commute = c(
 xwalk_acs19_commute = acs19_commute[var_commute]
 
 # rename columns
-# ref: https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
+# https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
 xwalk_acs19_commute = xwalk_acs19_commute %>%
   rename(
     commute_car = B08101_009E,
@@ -667,7 +667,7 @@ xwalk_acs19_commute = xwalk_acs19_commute %>%
     commute_walk = B08101_033E,
     commute_other = B08101_041E,
     commute_remote = B08101_049E
-)
+    )
 
 # show table dim
 # print("Show table dimensions below:")
@@ -686,7 +686,7 @@ xwalk_acs19_commute = xwalk_acs19_commute %>%
 #   B02001_008E: Estimate!!Total:!!Two or more races:
 
 # subset by columns
-# ref: https://www.statmethods.net/management/subset.html
+# https://www.statmethods.net/management/subset.html
 var_race = c(
 	"GEO_ID",
     "B02001_002E",
