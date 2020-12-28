@@ -705,8 +705,8 @@ xwalk_acs19_race = acs19_race[var_race]
 # dim(xwalk_acs19_race)
 
 # inner table joins based on geo_id, then merge into single table
-# note: all tables same dim except language (1 county short)
-# ref: https://mikoontz.github.io/data-carpentry-week/lesson_joins.html
+# note: all tables are the same dim except language (1 county short)
+# https://mikoontz.github.io/data-carpentry-week/lesson_joins.html
 join_acs19_hhm_hh = inner_join(
     xwalk_acs19_hh_median,
     xwalk_acs19_hh,
@@ -724,7 +724,7 @@ join_acs19_edu_com = inner_join(
 )
 
 # left join for language since it is short by 1 county
-# ref: https://mikoontz.github.io/data-carpentry-week/lesson_joins.html
+# https://mikoontz.github.io/data-carpentry-week/lesson_joins.html
 join_acs19_race_language = left_join(
     xwalk_acs19_race,
     xwalk_acs19_lang,
@@ -768,7 +768,7 @@ acs19 = inner_join(
 # str(acs19)
 
 # remove geo_id for regression model fit
-# ref: https://stackoverflow.com/questions/5234117/how-to-drop-columns-by-name-in-a-data-frame
+# https://stackoverflow.com/questions/5234117/how-to-drop-columns-by-name-in-a-data-frame
 acs19_noid = subset(acs19, select=-c(GEO_ID))
 
 # write/read dataframe to remove factor levels
