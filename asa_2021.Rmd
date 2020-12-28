@@ -1216,10 +1216,11 @@ plot(fit_acs19_poverty_all)
 
 Model fit was improved by including the best attributes from the data analysis which improved the model as verified with a lower p-value and higher r-squared value as compared to the other models with fewer features.
 
-```{r echo=TRUE}
+```{r echo=TRUE, message=FALSE, warning=FALSE}
 
 # fit best features to evaluate their importance
-fit_acs19_best_features = lm(log(hh_median) ~ log(as.numeric(housing_more_3000)) +
+fit_acs19_best_features = lm(
+    log(hh_median) ~ log(as.numeric(housing_more_3000)) +
     log(as.numeric(commute_transit)) +
     log(as.numeric(commute_remote)) +
     log(as.numeric(commute_carpool)) +
@@ -1237,37 +1238,112 @@ plot(fit_acs19_poverty_all)
 
 ```
 
-### 2019 ACS - Model Refinement (Continued)
+### 2019 ACS - Disadvantaged Communities
 
-> Improve linear model with best features and analyze results.
+> This section identifies disadvantaged communities with a subset of the ACS 2019 dataset of communities with the 20% lowest percentile of median household income.
 
-1. PCA and Variance Plot
-2. Logistic Regression for Median Income and Location
-3. Diagnostics for Logistic Regression
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+# evaluate median household income
+# hh_median_sw = median(acs19_nofactor$hh_median)
+# hh_median_sw
+
+# subset for 0.20 quantile per CA HUD guidelines
+# https://www.hcd.ca.gov/grants-funding/income-limits/state-and-federal-income-limits/docs/income-limits-2020.pdf
+hh_median_qt20 = quantile(acs19_nofactor$hh_median, 0.2)
+hh_median_qt20
+
+# subset for 0.80 quantile per CA HUD guidelines
+# https://www.hcd.ca.gov/grants-funding/income-limits/state-and-federal-income-limits/docs/income-limits-2020.pdf
+hh_median_qt80 = quantile(acs19_nofactor$hh_median, 0.8)
+hh_median_qt80
+
+# filter for median income above 0.80 quantile
+# https://stackoverflow.com/questions/6253837/subset-data-frame-based-on-percentage
+hh_median_20 = subset(
+    acs19_hh_income, as.numeric(B19001_001E) <= quantile(as.numeric(B19001_001E), 0.2)
+)
+
+# filter for median income below 0.20 quantile
+# https://stackoverflow.com/questions/6253837/subset-data-frame-based-on-percentage
+hh_median_80 = subset(
+    acs19_hh_income, as.numeric(B19001_001E) >= quantile(as.numeric(B19001_001E), 0.8)
+)
+hh_median_80$NAME
+
+# boxplot for median income below 0.80 quantile
+# https://www.biostars.org/p/344165/
+# https://stackoverflow.com/questions/14872783/how-do-i-show-all-boxplot-labels
+# par(mar=c(10,2,2,1))
+# boxplot(as.numeric(B19001_001E) ~ NAME,
+#     data=hh_median_80,
+#     las=2,
+#     cex.axis=0.5,
+#     main="Median Household Income (Low Income: 80% Quantile)",
+#     ylab="Median Household Income ($)",
+#     xlab=""
+# )
+
+# verify dataset size after subet
+# dim(acs19_hh_income)
+# unique(acs19_hh_income$NAME)
+# dim(hh_median_20)
+# unique(hh_median_20$NAME)
+# dim(hh_median_80)
+# unique(hh_median_80$NAME)
+
+```
 
 ### NCHS COVID-19 Data
 
 > Import CDC COVID-19 data and compare with ACS data.
 
-```{r echo=TRUE}
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+# data source: U.S. Census Data Portal
+nchs_covid_county <- read.csv(
+    # "https://data.census.gov/cedsci/table?q=B06007&tid=ACSDT1Y2019.B06007.csv"
+    "data/Provisional_COVID-19_Death_Counts_in_the_United_States_by_County.csv"
+)
+
+# show table dim
+print("Show table dimensions below:")
+dim(nchs_covid_county)
+
+# preview table rows
+print("Preview table rows below:")
+head(nchs_covid_county)
+
+# rename columns
+# https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
+# xwalk_acs19_lang = xwalk_acs19_lang %>%
+#   rename(
+#     lang_english = B06007_002E,
+#     lang_spanish = B06007_004E,
+#     lang_other = B06007_005E
+#     )
+
+# show table dim
+# print("Show table dimensions below:")
+# head(xwalk_acs19_lang)
+# dim(xwalk_acs19_lang)
+
+# remove geo_id for regression model fit
+# https://stackoverflow.com/questions/5234117/how-to-drop-columns-by-name-in-a-data-frame
+# acs19_noid = subset(acs19, select=-c(GEO_ID))
+
+# write/read dataframe to remove factor levels
+# write.csv(acs19_noid, "data/acs19_noid.csv")
+# acs19_nofactor = read.csv("data/acs19_noid.csv")
+
+# verify that tables joined correctly
+# print("Show table dimensions below:")
+# dim(acs19_nofactor)
+# str(acs19_nofactor)
 
 ```
 
-## Part 4: Data Visualization
-
-1. Contingency Tables
-2. Histogram to Show Skew
-3. Box Plot for All Counties
-
-### Summary Plots
-
-> Provide summary plots based on data analysis results.
-
-```{r echo=TRUE}
-
-```
-
-## Part 5: Recommendations
+## Part 4: Recommendations
 
 ### Key Findings
 
