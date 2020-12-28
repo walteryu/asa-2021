@@ -1351,6 +1351,15 @@ head(nchs_covid_county)
 
 Some key findings are as follows:
 
-1. Education attainment, commute mode and housing cost had good relationship with median household income.
-2. Some features have a wide variance and outlier/high leverage points.
-3. Combining best features resulted in better model fit (i.e. lower p-value and higher adjusted r-squared value).
+1. Education attainment, commute mode and housing cost had the best relationship with median household income among the features which were compared with median income.
+2. Some features have a wide variance and outlier/high leverage points; as a result, log transform was applied to features to reduce their impact.
+3. Combining best features resulted in better model fit, i.e. lower p-value and higher adjusted r-squared value. Features were added incrementally to evaluate their individual impacts
+
+## Part 5: Future Improvements
+
+> Possible improvements for additional analysis.
+
+1. PCA and Variance Plot
+2. Histogram to Evaluate Skew
+3. Logistic Regression for Median Income and Location
+4. Diagnostic Plot and Analysis of Logistic Regression
