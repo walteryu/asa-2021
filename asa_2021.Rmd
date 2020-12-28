@@ -237,49 +237,49 @@ library(dplyr)
 
 # data source: U.S. Census Data Portal
 acs19_language <- read.csv(
-    # "data/https://data.census.gov/cedsci/table?q=B06007&tid=ACSDT1Y2019.B06007.csv"
+    # "https://data.census.gov/cedsci/table?q=B06007&tid=ACSDT1Y2019.B06007.csv"
     "data/ACSDT1Y2019.B06007_data_with_overlays_2020-11-18T232550.csv"
 )
 
 # data source: U.S. Census Data Portal
 acs19_hh_income <- read.csv(
-    # "data/https://data.census.gov/cedsci/table?text=B19001&tid=ACSDT1Y2019.B19001.csv"
+    # "https://data.census.gov/cedsci/table?text=B19001&tid=ACSDT1Y2019.B19001.csv"
     "data/ACSDT1Y2019.B19001_data_with_overlays_2020-11-22T010349.csv"
 )
 
 # data source: U.S. Census Data Portal
 acs19_hh_income_median <- read.csv(
-    # "data/https://data.census.gov/cedsci/table?text=B19013&tid=ACSDT1Y2019.B19013.csv"
+    # "https://data.census.gov/cedsci/table?text=B19013&tid=ACSDT1Y2019.B19013.csv"
     "data/ACSDT1Y2019.B19013_data_with_overlays_2020-11-22T035924.csv"
 )
 
 # data source: U.S. Census Data Portal
 acs19_poverty <- read.csv(
-    # "data/https://data.census.gov/cedsci/table?text=B17001&tid=ACSDT1Y2019.B17001.csv"
+    # "https://data.census.gov/cedsci/table?text=B17001&tid=ACSDT1Y2019.B17001.csv"
     "data/ACSDT1Y2019.B17001_data_with_overlays_2020-11-22T010613.csv"
 )
 
 # data source: U.S. Census Data Portal
 acs19_housing <- read.csv(
-    # "data/https://data.census.gov/cedsci/table?text=B25104&tid=ACSDT1Y2019.B25104.csv"
+    # "https://data.census.gov/cedsci/table?text=B25104&tid=ACSDT1Y2019.B25104.csv"
     "data/ACSDT1Y2019.B25104_data_with_overlays_2020-11-22T003237.csv"
 )
 
 # data source: U.S. Census Data Portal
 acs19_education <- read.csv(
-    # "data/https://data.census.gov/cedsci/table?text=B15003&tid=ACSDT1Y2019.B15003.csv"
+    # "https://data.census.gov/cedsci/table?text=B15003&tid=ACSDT1Y2019.B15003.csv"
     "data/ACSDT1Y2019.B15003_data_with_overlays_2020-11-22T004032.csv"
 )
 
 # data source: U.S. Census Data Portal
 acs19_commute <- read.csv(
-    # "data/https://data.census.gov/cedsci/table?text=B08101&tid=ACSDT1Y2019.B08101.csv"
+    # "https://data.census.gov/cedsci/table?text=B08101&tid=ACSDT1Y2019.B08101.csv"
     "data/ACSDT1Y2019.B08101_data_with_overlays_2020-11-22T004429.csv"
 )
 
 # data source: U.S. Census Data Portal
 acs19_race <- read.csv(
-    # "data/https://data.census.gov/cedsci/table?text=B02001&tid=ACSDT1Y2019.B02001.csv"
+    # "https://data.census.gov/cedsci/table?text=B02001&tid=ACSDT1Y2019.B02001.csv"
     "data/ACSDT1Y2019.B02001_data_with_overlays_2020-11-22T010027.csv"
 )
 
@@ -324,7 +324,7 @@ acs19_race = acs19_race[-1, ]
 # 	B06007_005E: Speak other languages:!!Speak English "very well"
 
 # subset by columns
-# ref: https://www.statmethods.net/management/subset.html
+# https://www.statmethods.net/management/subset.html
 var_lang = c(
 	"GEO_ID",
 	"B06007_002E",
@@ -334,7 +334,7 @@ var_lang = c(
 xwalk_acs19_lang = acs19_language[var_lang]
 
 # rename columns
-# ref: https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
+# https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
 xwalk_acs19_lang = xwalk_acs19_lang %>%
   rename(
     lang_english = B06007_002E,
@@ -368,7 +368,7 @@ xwalk_acs19_lang = xwalk_acs19_lang %>%
 #   B19001_017E: Estimate!!Total:!!$200,000 or more
 
 # subset by columns
-# ref: https://www.statmethods.net/management/subset.html
+# https://www.statmethods.net/management/subset.html
 var_hh = c(
     "GEO_ID",
     "B19001_002E",
@@ -391,7 +391,7 @@ var_hh = c(
 xwalk_acs19_hh = acs19_hh_income[var_hh]
 
 # rename columns
-# ref: https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
+# https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
 xwalk_acs19_hh = xwalk_acs19_hh %>%
   rename(
     hh_less_10k = B19001_002E,
