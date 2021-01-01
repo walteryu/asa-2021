@@ -1316,7 +1316,7 @@ arrange(hh_median_80, as.numeric(as.character(B19001_001E)))
 #     xlab=""
 # )
 
-# verify dataset size after subet
+# verify dataset size after subset
 # dim(acs19_hh_income)
 # unique(acs19_hh_income$NAME)
 # dim(hh_median_20)
@@ -1329,6 +1329,10 @@ arrange(hh_median_80, as.numeric(as.character(B19001_001E)))
 ### NCHS COVID-19 Data
 
 > Import CDC COVID-19 data and compare with ACS data.
+
+* NHCS COVID-19 [mortality count data][3.00] reported by county was used to measure the impact of the pandemic on communities within California.
+
+[03.00]: https://data.cdc.gov/NCHS/Provisional-COVID-19-Death-Counts-by-County-and-Ra/k8wy-p9cg
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
