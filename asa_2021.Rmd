@@ -1343,39 +1343,43 @@ nchs_covid_county <- read.csv(
 )
 
 # show table dim
-print("Show table dimensions below:")
-dim(nchs_covid_county)
+# print("Show table dimensions below:")
+# dim(nchs_covid_county)
 
 # preview table rows
-print("Preview table rows below:")
-head(nchs_covid_county)
+# print("Preview table rows below:")
+# head(nchs_covid_county)
 
-# rename columns
-# https://www.datanovia.com/en/lessons/rename-data-frame-columns-in-r/
-# xwalk_acs19_lang = xwalk_acs19_lang %>%
-#   rename(
-#     lang_english = B06007_002E,
-#     lang_spanish = B06007_004E,
-#     lang_other = B06007_005E
-#     )
+# subset by state
+nchs_covid_county_ca <- subset(
+    nchs_covid_county,
+    State=='CA',
+    select=c(State, County.name, Urban.Rural.Code, Deaths.involving.COVID.19)
+)     
 
-# show table dim
-# print("Show table dimensions below:")
-# head(xwalk_acs19_lang)
-# dim(xwalk_acs19_lang)
+# filter for mortality count above 0.80 quantile
+# https://stackoverflow.com/questions/6253837/subset-data-frame-based-on-percentage
+nchs_covid_county_20 = subset(
+    nchs_covid_county_ca, as.numeric(Deaths.involving.COVID.19) <= quantile(as.numeric(Deaths.involving.COVID.19), 0.2)
+)
 
-# remove geo_id for regression model fit
-# https://stackoverflow.com/questions/5234117/how-to-drop-columns-by-name-in-a-data-frame
-# acs19_noid = subset(acs19, select=-c(GEO_ID))
+# sort in descending order
+# https://dplyr.tidyverse.org/reference/desc.html
+# names(nchs_covid_county_20)
+# dim(nchs_covid_county_20)
+nchs_covid_county_20 %>% arrange(desc(Deaths.involving.COVID.19))
 
-# write/read dataframe to remove factor levels
-# write.csv(acs19_noid, "data/acs19_noid.csv")
-# acs19_nofactor = read.csv("data/acs19_noid.csv")
+# filter for mortality count above 0.20 quantile
+# https://stackoverflow.com/questions/6253837/subset-data-frame-based-on-percentage
+nchs_covid_county_80 = subset(
+    nchs_covid_county_ca, as.numeric(Deaths.involving.COVID.19) >= quantile(as.numeric(Deaths.involving.COVID.19), 0.8)
+)
 
-# verify that tables joined correctly
-# print("Show table dimensions below:")
-# dim(acs19_nofactor)
-# str(acs19_nofactor)
+# sort in descending order
+# https://dplyr.tidyverse.org/reference/desc.html
+# names(nchs_covid_county_80)
+# dim(nchs_covid_county_80)
+nchs_covid_county_80 %>% arrange(desc(Deaths.involving.COVID.19))
 
 ```
 
