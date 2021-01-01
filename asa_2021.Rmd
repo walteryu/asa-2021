@@ -984,7 +984,7 @@ cor(acs19_nofactor$hh_median, acs19_nofactor[col_housing])
 # https://www.theanalysisfactor.com/linear-models-r-plotting-regression-lines/
 plot(log(hh_median) ~ log(as.numeric(housing_more_3000)),
     main="Median Household Income and Housing Cost (Log Scale Plot)",
-    xlab="Monthly Housing Cost Over $3k/Month (Count)",
+    xlab="Monthly Housing Cost Over $3k/Month (Household Count)",
     ylab="Median Household Income ($)",
     pch=16,
     col="blue",
@@ -1094,7 +1094,7 @@ cor(acs19_nofactor$hh_median, acs19_nofactor[col_edu])
 # https://www.theanalysisfactor.com/linear-models-r-plotting-regression-lines/
 plot(log(hh_median ) ~ log(as.numeric(edu_doctorate)),
     main="Median Household Income and Education Attainment (Log Scale Plot)",
-    xlab="Education Attainment of Doctorate Degree (Count)",
+    xlab="Education Attainment of Doctorate Degree (Household Count)",
     ylab="Median Household Income ($)",
     pch=16,
     col="blue",
