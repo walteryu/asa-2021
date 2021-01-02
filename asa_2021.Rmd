@@ -45,7 +45,7 @@ This entry focuses on California communities to control its scope since several 
 This project and its analysis are designed to be interpretable, so it organizes data analysis steps into the following modules:
 
 1. Overview: Outline approach, assumptions and data sources
-2. Data Processing: Data prepration for analysis
+2. Data Processing: Data preparation for analysis
 3. Data Analysis: Model fit, coefficient interpretation and diagnostics
 4. Recommendations: Document key findings from data analysis
 5. Future Improvements: Possible improvements upon completing analysis
@@ -1123,7 +1123,7 @@ plot(fit_acs19_edu_doctorate)
 
 ### 2019 ACS - Race
 
-> Race has a good relationship with median household income as verified with the model fit and low p-value. In particular, residents which indicated "American Indian", "Alaska Native alone" and "Asian alone" as their race were more closely associated with median household income.
+> Race has a positive relationship with median household income as verified with the model fit and low p-value. In particular, residents which indicated "American Indian", "Alaska Native alone" and "Asian alone" as their race were more closely associated with median household income.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
@@ -1185,7 +1185,7 @@ plot(fit_acs19_race_all)
 
 ### 2019 ACS - Poverty Level
 
-> Poverty level has a good relationship with median household income as verified with the model fit and low p-value. However when either of the two features are isolated, then their fit is poor so poverty is not particularly useful for the analysis.
+> Poverty level has a positive relationship with median household income as verified with the model fit and low p-value. However when either of the two features are isolated, then their fit is poor so poverty is not particularly useful for the analysis.
 
 The poor fit is likely due to the large size of each group (above or below poverty income level) which basically divides the dataset into two halves and results in poor fit due to large variance of each subset. Poverty level is intuitively a good indicator of median household income; however, the feature is not granular enough to use for additional analysis.
 
