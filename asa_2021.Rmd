@@ -15,12 +15,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 * Event: [ASA Data Challenge Expo][00.00]
 * Name: Walter Yu
-* Organization: Code for America ([Sacramento Brigade][00.13])
-* Source Code: Github [Repository][00.14]
+* Organization: [Code for America][00.13]
+* Section: [Sacramento Brigade][00.14]
+* Code Repository: [Github][00.15]
 
 [00.00]: https://community.amstat.org/dataexpo/home
-[00.13]: https://codeforsacramento.org/
-[00.14]: https://github.com/walteryu/asa-2021
+[00.13]: https://www.codeforamerica.org/
+[00.14]: https://codeforsacramento.org/
+[00.15]: https://github.com/walteryu/asa-2021
 
 ### Executive Summary
 
