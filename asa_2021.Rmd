@@ -1183,7 +1183,7 @@ plot(fit_acs19_race_all)
 
 ### 2019 ACS - Poverty Level
 
-> Poverty level as a whole has a good relationship with median household income as verified with the low p-value. However when either of the two features are isolated, then their fit is poor so poverty is not particularly useful for the analysis.
+> Poverty level has a good relationship with median household income as verified with the model fit and low p-value. However when either of the two features are isolated, then their fit is poor so poverty is not particularly useful for the analysis.
 
 The poor fit is likely due to the large size of each group (above or below poverty income level) which basically divides the dataset into two halves and results in poor fit due to large variance of each subset. Poverty level is intuitively a good indicator of median household income; however, the feature is not granular enough to use for additional analysis.
 
@@ -1220,7 +1220,7 @@ plot(fit_acs19_poverty_all)
 
 > Improve linear model with best features and analyze results.
 
-Model fit was improved by including the best attributes from the data analysis which improved the model as verified with a lower p-value and higher r-squared value as compared to the other models with fewer features.
+The linear regression model was refined by fitting the best attributes from the data analysis which improved the model as verified with a lower p-value and higher r-squared value than as compared to the other models using individual data tables.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
@@ -1248,9 +1248,21 @@ plot(fit_acs19_poverty_all)
 
 > This section identifies disadvantaged communities with a subset of the ACS 2019 dataset of communities with the 20% lowest percentile of median household income.
 
-* The 20% quantile of median household income was selected as a threshold to identify disadvantaged communities based on the CA HUD [low income guidelines][3.00] which indicates a similar metric.
+The 20% quantile of median household income was selected as a threshold to identify disadvantaged communities based on the CA HUD [low income guidelines][3.00] which indicates a similar metric. In general, income level is typically used to evaluate communities and residents in need of government assistance so it was used for this portion of data analysis.
 
 [03.00]: https://www.hcd.ca.gov/grants-funding/income-limits/state-and-federal-income-limits/docs/income-limits-2020.pdf
+
+California communities with the lowest median household income based the 2019 ACS dataset are listed below in rank order:
+
+1. Tehama County, California    ($25,310/year)
+2. Lake County, California      ($25,968/year)
+3. Yuba County, California      ($26,827/year)
+4. Sutter County, California    ($33,039/year)
+5. Mendocino County, California ($34,478/year)
+6. Nevada County, California    ($39,365/year)
+7. Madera County, California    ($44,387/year)
+8. Kings County, California     ($44,761/year)
+9. Napa County, California      ($48,107/year)
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
@@ -1334,11 +1346,25 @@ arrange(hh_median_80, as.numeric(as.character(B19001_001E)))
 
 ### NCHS COVID-19 Data
 
-> Import CDC COVID-19 data and compare with ACS data.
+> This section identifies impacts on disadvantaged communities with a subset of the NHCS COVID dataset of communities with the 20% highest percentile of COVID-related mortality count.
 
-* NHCS COVID-19 [mortality count data][3.00] reported by county was used to measure the impact of the pandemic on communities within California.
+The NHCS COVID-19 [mortality count data][3.00] reported by county was used to measure the impact of the pandemic on communities within California. The results showed that larger metro areas had higher total mortality count as compared with those in smaller, rural communities. This trend is validated in findings from sources such as the Los Angeles Times [COVID-19 Dashboard][03.01] which provides data visualizations of highest case counts within California.
 
 [03.00]: https://data.cdc.gov/NCHS/Provisional-COVID-19-Death-Counts-by-County-and-Ra/k8wy-p9cg
+[03.01]: https://www.latimes.com/projects/california-coronavirus-cases-tracking-outbreak/
+
+One possible area for analysis would be to identify disadvantage communities within each California county to differentiate their leves of need since the current rank of counties indicate pandemic impacts primarily based on metro type and total population count.
+
+California communities with the highest COVID-related mortality count based the NCHS dataset are listed below in rank order:
+
+1. Los Angeles County, California       (3328398)
+2. San Diego County, California         (1132434)
+3. Orange County, California            (1044280)
+4. Riverside County, California         (734948)
+5. San Bernardino County, California    (644758)
+6. Santa Clara County, California       (643637)
+7. Alameda County, California           (585632)
+8. Sacramento County, California        (556752)
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
