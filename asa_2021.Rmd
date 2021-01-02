@@ -13,20 +13,22 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Entry Details
 
-* [ASA Data Challenge Expo][00.00]
+* Event: [ASA Data Challenge Expo][00.00]
 * Name: Walter Yu
-* Date: Fall 2020
+* Organization: Code for America ([Sacramento Brigade][00.13])
+* Source Code: Github [Repository][00.14]
 
 [00.00]: https://community.amstat.org/dataexpo/home
+[00.13]: https://codeforsacramento.org/
+[00.14]: https://github.com/walteryu/asa-2021
 
 ### Executive Summary
 
-This entry aims to help disadvantaged communities during the COVID-19 pandemic by answering the following questions through analysis of core and supplemental datasets:
+This project aims to help disadvantaged communities during the COVID-19 pandemic by answering the following questions through analysis of core and supplemental datasets:
 
 1. Explore the relationship between socioeconomic features of the U.S. population and disadvantaged communities.
-2. Identify disadvantaged communities based on their median household income.
-3. Identify which disadvantaged communities have been most impacted by the COVID-19 pandemic and in need of public services.
-4. Provide recommendations on helping these communities based on data analysis results.
+2. Identify disadvantaged communities based on their median household income. These communities are likely be more impacted by the COVID-19 pandemic and in need of public services.
+3. Provide recommendations on helping these communities based on data analysis results.
 
 The intended audience are state/local governments, non-governmental organizations (NGOs) and volunteers which are able to provide aid and services to these communities.
 
@@ -38,10 +40,10 @@ This entry focuses on California communities to control its scope since several 
 
 ### Methodology
 
-This entry is designed to be interpretable, so it organizes data analysis steps into the following modules:
+This project and its analysis are designed to be interpretable, so it organizes data analysis steps into the following modules:
 
 1. Overview: Outline approach, assumptions and data sources
-2. Data Processing: Data preparation and manipulation for analysis
+2. Data Processing: Data prepration for analysis
 3. Data Analysis: Model fit, coefficient interpretation and diagnostics
 4. Recommendations: Document key findings from data analysis
 5. Future Improvements: Possible improvements upon completing analysis
