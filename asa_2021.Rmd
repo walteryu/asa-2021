@@ -1419,17 +1419,19 @@ nchs_covid_county_80 %>% arrange(desc(Deaths.involving.COVID.19))
 
 ### Key Findings
 
-> Provide recommendations based on data analysis results.
+> Thise section provides recommendations based on data analysis results to help disadvantage communities impacted by the pandemic.
 
-Some key findings are as follows:
+Key findings are as follows:
 
-1. Education attainment, commute mode and housing cost had the best relationship with median household income among the features which were compared with median income.
-2. Some features have a wide variance and outlier/high leverage points; as a result, log transform was applied to features to reduce their impact.
-3. Combining best features resulted in better model fit, i.e. lower p-value and higher adjusted r-squared value. Features were added incrementally to evaluate their individual impacts
+1. Education attainment, commute mode and housing cost had the best relationship with median household income among the features which were compared with median income. As a result, disadvantaged communities would most benefit from assistance with access to education, transit and affordable housing.
+
+Data analysis findings which may be applied to other U.S. regions are as follows:
+* Some features have a wide variance and outlier/high leverage points; as a result, log transformation is recommended to reduce their impact.
+* Combining best features resulted in better model fit, lower p-value and higher adjusted r-squared value, so it is recommended. Features were added incrementally to evaluate their individual impacts
 
 ## Part 5: Future Improvements
 
-> Possible improvements for additional analysis.
+> This section provides possible areas for additional analysis.
 
 1. PCA and Variance Plot
 2. Histogram to Evaluate Skew
