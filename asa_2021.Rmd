@@ -195,7 +195,7 @@ Datasets of interest were identified from the National Center for Health Statist
 
 ### Geospatial Datasets
 
-Datasets of interest were identified from the U.S. Census COVID-19 data portal under the categorical dataset section. They are documented for possible future use.
+Datasets of interest were identified from the U.S. Census COVID-19 data portal under the categorical dataset section. They were not used during the analysis but documented for future use.
 
 1. U.S. Census - COVID-19 Demographic and Economic Resources
 * Description: American Community Survey (ACS) about household income ranges and cutoffs and Poverty Status.
@@ -788,19 +788,21 @@ acs19_nofactor = read.csv("data/acs19_noid.csv")
 
 ### Methodology
 
-> Processed data was used to fit a linear regression model to identify key attributes associated with disadvantaged communities and those communities most impacted by the pandemic.  
+> Processed data was fit a linear regression model to identify key attributes associated with disadvantaged communities and those communities most impacted by the pandemic.  
 
 Data analysis was conducted as follows:
 
-1. Fit 2019 ACS data features into separate linear regression models to identify which had the best fit and association with median household income.
-2. Conduct coefficient interpretation and model diagnostics to refine models.
-3. Identify communities with lowest median income and highest COVID-19 death counts.
+1. Fit 2019 ACS data tables into separate linear regression models to identify which had the best fit and association with median household income.
+2. Interpret model fit, coefficient interpretation and model diagnostics to refine model by selecting the best data features and combining into its own linear regression model.
+3. Identify communities with lowest median income and highest COVID-19 death counts by analyzing the 2019 ACS and NCHS COVID-19 mortality count data.
 
 ### 2019 ACS - Commute Mode
 
-> Commute mode as a whole has a good relationship with median household income as verified with the low p-value. Features were split into two groups for analysis: car-based modes and transit-based modes.
+> Commute mode has a positive relationship with median household income as verified with the model fit and low p-value. Features were split into two groups for analysis: car-based modes and transit-based modes.
 
 Features within each group were fit individually into their own model. Carpool had a good fit in the car-based modes. Transit/remote work had good fits with transit-based modes. This finding implies that certain commute modes (i.e. carpool, transit and remote work) have a better relationship to income than other ones (i.e. walking).
+
+The pandemic may impact transit and resulted in additional remote work for the work force. One possible area for analysis would be to determine the level of reliance of residents in disadvantage communities on these modes to evaluate their true impacts.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
@@ -914,11 +916,13 @@ plot(fit_acs19_commute_all)
 
 ```
 
-### 2019 ACS - Housing Cost
+### 2019 ACS - Monthly Housing Cost
 
-> Housing cost as a whole has a good relationship with median household income as verified with the low p-value. In particular, higher monthly housing costs were more closely associated with median household income.
+> Monthly housing cost has a positive relationship with median household income as verified with the model fit and low p-value. In particular, higher monthly housing costs were more closely associated with median household income.
 
 This finding implies that certain higher housing cost is associated with median household income. However, lower housing cost features were not analyzed due to their large number, values with little or not rent and not being adjusted for cost of living (i.e. some counties may have significantly lower rents). As a result, only the higher housing cost features were analyzed.
+
+The pandemic may impact the ability of residents within disadvantaged communities to cover their monthly housing costs. One possible area for analysis would be to determine the ability of residents in disadvantage communities to cover these costs to evaluate their true impacts.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
@@ -1007,9 +1011,9 @@ plot(fit_acs19_housing_3000)
 
 ### 2019 ACS - Education Attainment
 
-> Education attainment as a whole has a good relationship with median household income as verified with the low p-value. In particular, education attainment including and beyond a bachelors degree was more closely associated with median household income.
+> Education attainment has a positive relationship with median household income as verified with the model fit and low p-value. In particular, education attainment including and beyond a bachelors degree was more closely associated with median household income.
 
-This finding implies that certain higher education attainment is associated with median household income. When variables were added the model, most maintained relatively lower p-values.
+This finding implies that certain higher education attainment is associated with median household income. When data features were added the model, most maintained relatively lower p-values. In particular, higher levels of education (e.g. doctorate degree) generally had a positive relationship with median household income.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
@@ -1117,7 +1121,7 @@ plot(fit_acs19_edu_doctorate)
 
 ### 2019 ACS - Race
 
-> Race as a whole has a good relationship with median household income as verified with the low p-value. In particular, "American Indian", "Alaska Native alone" and "Asian alone" features were more closely associated with median household income.
+> Race has a good relationship with median household income as verified with the model fit and low p-value. In particular, residents which indicated "American Indian", "Alaska Native alone" and "Asian alone" as their race were more closely associated with median household income.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
