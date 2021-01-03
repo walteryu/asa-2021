@@ -1453,8 +1453,11 @@ nchs_covid_county_80 %>% arrange(desc(Deaths.involving.COVID.19))
 Key findings are as follows:
 
 1. Education attainment, commute mode and housing cost had the best relationship with median household income among the features which were compared with median income. As a result, disadvantaged communities would most benefit from assistance with access to education, transit and affordable housing.
+2. The linear regression models generally had a good fit, and combining data features into the same model improved the fit.
+3. COVID-related mortality count is higher in large metro areas, so additional analysis is needed within these metro areas to differentiate impacts to disadvantaged communities.
 
 Data analysis findings which may be applied to other U.S. regions are as follows:
+
 * Some features have a wide variance and outlier/high leverage points; as a result, log transformation is recommended to reduce their impact.
 * Combining best features resulted in better model fit, lower p-value and higher adjusted r-squared value, so it is recommended. Features were added incrementally to evaluate their individual impacts
 
