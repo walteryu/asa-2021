@@ -1293,11 +1293,11 @@ plot(fit_acs19_poverty_all)
 
 > This section identifies disadvantaged communities with a subset of the ACS 2019 dataset of communities with the 20% lowest percentile of median household income.
 
-The 20% quantile of median household income was selected as a threshold to identify disadvantaged communities based on the CA HUD [low income guidelines][3.00] which indicates a similar metric. In general, income level is typically used to evaluate communities and residents in need of government assistance so it was used for this portion of data analysis.
+The 20% quantile of median household income was selected as a threshold to identify disadvantaged communities based on the CA HUD [low income guidelines][4.00] which indicates a similar metric. In general, income level is typically used to evaluate communities and residents in need of government assistance so it was used for this portion of data analysis.
 
-[03.00]: https://www.hcd.ca.gov/grants-funding/income-limits/state-and-federal-income-limits/docs/income-limits-2020.pdf
+[04.00]: https://www.hcd.ca.gov/grants-funding/income-limits/state-and-federal-income-limits/docs/income-limits-2020.pdf
 
-California communities with the lowest median household income based the 2019 ACS dataset are listed below in rank order:
+The California communities with the lowest median household income based the 2019 ACS dataset are listed below in rank order:
 
 1. Tehama County, California    ($25,310/year)
 2. Lake County, California      ($25,968/year)
