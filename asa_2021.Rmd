@@ -1479,52 +1479,24 @@ nchs_covid_county_80 %>% arrange(desc(Deaths.involving.COVID.19))
 
 ### Key Findings
 
-> Thise section provides recommendations based on data analysis results to help disadvantage communities impacted by the pandemic.
+> This section provides recommendations based on data analysis results to help disadvantage communities impacted by the pandemic.
 
 Key findings are as follows:
 
-1. Education attainment, commute mode and housing cost had the best relationship with median household income among the features which were compared with median income. As a result, disadvantaged communities would most benefit from assistance with access to education, transit and affordable housing.
-2. The linear regression models generally had a good fit, and combining data features into the same model improved the fit.
-3. COVID-related mortality count is higher in large metro areas, so additional analysis is needed within these metro areas to differentiate impacts to disadvantaged communities.
+1. Best Features: Education attainment, commute mode and housing cost had the best relationship with median household income among the features which were compared with median income. As a result, disadvantaged communities would most benefit from assistance with access to education, transit and affordable housing.
+2. Population Count: The U.S. Census ACS and NCHS COVID-19 datasets were all provided by population count, so relationships were established between counties with high population count below 80% median income and other data features. Additional analysis is needed to differentiate specific impacts on disadvantaged communities since one county typically contains multiple communities.
+3. Model Improvement: The linear regression models generally had good fits, and combining data features into the same model generated a better fit than the individual models. Data features were isolated to identify their impact to the model as they were added incrementally.
+4. Pandemic Impact: COVID-related mortality count is higher in large metro areas, so additional analysis is needed within these metro areas to differentiate impacts to disadvantaged communities. For example, identifying the proportion of disadvantaged communities within counties with the highest COVID-related mortality count.
 
 Data analysis findings which may be applied to other U.S. regions are as follows:
 
-* Some features have a wide variance and outlier/high leverage points; as a result, log transformation is recommended to reduce their impact.
-* Combining best features resulted in better model fit, lower p-value and higher adjusted r-squared value, so it is recommended. Features were added incrementally to evaluate their individual impacts
+* Log Transformation: Some features have a wide variance and outlier/high leverage points; as a result, log transformation is recommended to reduce their impact. In addition, some data features vary in their magnitude, so the log transformation helped minimize their impacts.
+* Linear Model: Combining best features resulted in better model fit, lower p-value and higher adjusted r-squared value, so it is recommended. Features were added incrementally to evaluate their individual impacts.
 
 ## Part 5: Future Improvements
 
 > This section provides possible areas for additional analysis.
 
-1. PCA and Variance Plot: Identify principal components to validate findings from this project, and use plots to identify additional features which may contribute to variance.
-2. Histogram to Evaluate Skew: Plot distribution of each data table to evaluate their distribution and possible skew which may exist within the datasets.
-3. Logistic Regression: Analyze median household income with location to evaluate whether location has a positive relationship with median income.
-
-```{r echo=TRUE, message=FALSE, warning=FALSE}
-
-# total population count below 20% of median household income ($56k/year)    
-# https://stackoverflow.com/questions/26046776/sum-two-columns-in-r
-xwalk_acs19_hh$hh_less_10k = as.numeric(as.character(xwalk_acs19_hh$hh_less_10k))
-xwalk_acs19_hh$hh_10k = as.numeric(as.character(xwalk_acs19_hh$hh_10k))
-xwalk_acs19_hh$hh_15k = as.numeric(as.character(xwalk_acs19_hh$hh_15k))
-xwalk_acs19_hh$hh_20k = as.numeric(as.character(xwalk_acs19_hh$hh_20k))
-xwalk_acs19_hh$hh_25k = as.numeric(as.character(xwalk_acs19_hh$hh_25k))
-xwalk_acs19_hh$hh_30k = as.numeric(as.character(xwalk_acs19_hh$hh_30k))
-xwalk_acs19_hh$hh_35k = as.numeric(as.character(xwalk_acs19_hh$hh_35k))
-xwalk_acs19_hh$hh_40k = as.numeric(as.character(xwalk_acs19_hh$hh_40k))
-xwalk_acs19_hh$hh_45k = as.numeric(as.character(xwalk_acs19_hh$hh_45k))
-xwalk_acs19_hh$hh_50k = as.numeric(as.character(xwalk_acs19_hh$hh_50k))
-
-xwalk_acs19_hh_median$hh_median = xwalk_acs19_hh$hh_less_10k +
-xwalk_acs19_hh$hh_10k +
-xwalk_acs19_hh$hh_15k +
-xwalk_acs19_hh$hh_20k +
-xwalk_acs19_hh$hh_25k +
-xwalk_acs19_hh$hh_30k +
-xwalk_acs19_hh$hh_35k +
-xwalk_acs19_hh$hh_40k +
-xwalk_acs19_hh$hh_45k +
-xwalk_acs19_hh$hh_50k
-xwalk_acs19_hh_median$hh_median
-
-```
+1. PCA and Variance Plot: Identify principal components to validate findings from this project, and use plots to identify additional features which may contribute to variance. In addition, data features can be used to refine the linear model.
+2. Histogram to Evaluate Skew: Plot distribution of each data table to evaluate their distribution and possible skew which may exist within the datasets. A few high leverage data points were observed during the analysis, so the plot will help identify their impacts.
+3. Logistic Regression: Analyze median household income with location to evaluate whether location has a positive relationship with median income. All datasets are based on location, so their relationship with each data feature is of interest.
