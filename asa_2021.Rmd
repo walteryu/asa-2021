@@ -1311,32 +1311,14 @@ The California communities with the lowest median household income based the 201
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
-# evaluate median household income
-# hh_median_sw = median(acs19_nofactor$hh_median)
-# hh_median_sw
-
-# subset for 0.20 quantile per CA HUD guidelines
-# https://www.hcd.ca.gov/grants-funding/income-limits/state-and-federal-income-limits/docs/income-limits-2020.pdf
-hh_median_qt20 = quantile(
-    as.numeric(as.character(acs19_nofactor$hh_median)), 0.2
-)
-hh_median_qt20
-
-# subset for 0.80 quantile per CA HUD guidelines
-# https://www.hcd.ca.gov/grants-funding/income-limits/state-and-federal-income-limits/docs/income-limits-2020.pdf
-hh_median_qt80 = quantile(
-    as.numeric(as.character(acs19_nofactor$hh_median)), 0.8
-)
-hh_median_qt80
-
 # filter for median income above 0.80 quantile
 # https://stackoverflow.com/questions/6253837/subset-data-frame-based-on-percentage
 # https://faculty.nps.edu/sebuttre/home/R/factors.html
-hh_median_20 = subset(
-    acs19_hh_income,
-    as.numeric(as.character(B19001_001E)) <= quantile(as.numeric(as.character(B19001_001E)), 0.2),
-    select=c(NAME, B19001_001E)
-)
+# hh_median_20 = subset(
+#     acs19_hh_income,
+#     as.numeric(as.character(B19001_001E)) <= quantile(as.numeric(as.character(B19001_001E)), 0.2),
+#     select=c(NAME, B19001_001E)
+# )
 
 # sort in descending order
 # https://dplyr.tidyverse.org/reference/desc.html
@@ -1345,16 +1327,17 @@ hh_median_20 = subset(
 # sort by median household income
 # https://dplyr.tidyverse.org/reference/arrange.html
 # dim(hh_median_20)
-arrange(hh_median_20, as.numeric(as.character(B19001_001E)))
+# arrange(hh_median_20, as.numeric(as.character(B19001_001E)))
+arrange(acs19, as.numeric(as.character(hh_median)))
 
 # filter for median income below 0.20 quantile
 # https://stackoverflow.com/questions/6253837/subset-data-frame-based-on-percentage
 # https://faculty.nps.edu/sebuttre/home/R/factors.html
-hh_median_80 = subset(
-    acs19_hh_income,
-    as.numeric(as.character(B19001_001E)) >= quantile(as.numeric(as.character(B19001_001E)), 0.8),
-    select=c(NAME, B19001_001E)
-)
+# hh_median_80 = subset(
+#     acs19_hh_income,
+#     as.numeric(as.character(B19001_001E)) >= quantile(as.numeric(as.character(B19001_001E)), 0.8),
+#     select=c(NAME, B19001_001E)
+# )
 
 # sort in descending order
 # https://dplyr.tidyverse.org/reference/desc.html
