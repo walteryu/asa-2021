@@ -1335,7 +1335,7 @@ The California communities with the highest count of residents below 80% median 
 # https://dplyr.tidyverse.org/reference/arrange.html
 # dim(hh_median_20)
 # arrange(hh_median_20, as.numeric(as.character(B19001_001E)))
-arrange(acs19, as.numeric(as.character(hh_median)))
+# arrange(acs19, as.numeric(as.character(hh_median)))
 
 # filter for median income below 0.20 quantile
 # https://stackoverflow.com/questions/6253837/subset-data-frame-based-on-percentage
