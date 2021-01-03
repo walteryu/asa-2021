@@ -441,6 +441,31 @@ xwalk_acs19_hh_median = xwalk_acs19_hh_median %>%
     hh_median = B19013_001E
     )
 
+# total population count below 20% of median household income ($56k/year)    
+# https://stackoverflow.com/questions/26046776/sum-two-columns-in-r
+xwalk_acs19_hh$hh_less_10k = as.numeric(as.character(xwalk_acs19_hh$hh_less_10k))
+xwalk_acs19_hh$hh_10k = as.numeric(as.character(xwalk_acs19_hh$hh_10k))
+xwalk_acs19_hh$hh_15k = as.numeric(as.character(xwalk_acs19_hh$hh_15k))
+xwalk_acs19_hh$hh_20k = as.numeric(as.character(xwalk_acs19_hh$hh_20k))
+xwalk_acs19_hh$hh_25k = as.numeric(as.character(xwalk_acs19_hh$hh_25k))
+xwalk_acs19_hh$hh_30k = as.numeric(as.character(xwalk_acs19_hh$hh_30k))
+xwalk_acs19_hh$hh_35k = as.numeric(as.character(xwalk_acs19_hh$hh_35k))
+xwalk_acs19_hh$hh_40k = as.numeric(as.character(xwalk_acs19_hh$hh_40k))
+xwalk_acs19_hh$hh_45k = as.numeric(as.character(xwalk_acs19_hh$hh_45k))
+xwalk_acs19_hh$hh_50k = as.numeric(as.character(xwalk_acs19_hh$hh_50k))
+
+xwalk_acs19_hh_median$hh_median = xwalk_acs19_hh$hh_less_10k +
+xwalk_acs19_hh$hh_10k +
+xwalk_acs19_hh$hh_15k +
+xwalk_acs19_hh$hh_20k +
+xwalk_acs19_hh$hh_25k +
+xwalk_acs19_hh$hh_30k +
+xwalk_acs19_hh$hh_35k +
+xwalk_acs19_hh$hh_40k +
+xwalk_acs19_hh$hh_45k +
+xwalk_acs19_hh$hh_50k
+# xwalk_acs19_hh_median$hh_median
+
 # show table dim
 # print("Show table dimensions below:")
 # head(xwalk_acs19_hh_median)
