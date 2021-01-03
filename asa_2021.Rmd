@@ -809,6 +809,24 @@ acs19_nofactor = read.csv("data/acs19_noid.csv")
 # dim(acs19_nofactor)
 # str(acs19_nofactor)
 
+# evaluate median household income
+# hh_median_sw = median(acs19_nofactor$hh_median)
+# hh_median_sw
+
+# subset for 0.20 quantile per CA HUD guidelines
+# https://www.hcd.ca.gov/grants-funding/income-limits/state-and-federal-income-limits/docs/income-limits-2020.pdf
+hh_median_qt20 = quantile(
+    as.numeric(as.character(acs19_nofactor$hh_median)), 0.2
+)
+hh_median_qt20
+
+# subset for 0.80 quantile per CA HUD guidelines
+# https://www.hcd.ca.gov/grants-funding/income-limits/state-and-federal-income-limits/docs/income-limits-2020.pdf
+hh_median_qt80 = quantile(
+    as.numeric(as.character(acs19_nofactor$hh_median)), 0.8
+)
+hh_median_qt80
+
 ```
 
 ## Part 3: Data Analysis
