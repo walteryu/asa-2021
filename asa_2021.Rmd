@@ -972,9 +972,11 @@ plot(fit_acs19_commute_all)
 
 ### 2019 ACS - Monthly Housing Cost
 
-> Monthly housing cost has a positive relationship with median household income as verified with the model fit and low p-value. In particular, higher monthly housing costs were more closely associated with median household income.
+> Monthly housing cost has a positive relationship with median household income as verified with the model fit and low p-value. The model fit revealed an unexpected result that counties with larger low income populations also had larger populations with high housing cost (above $3k/month). However, this finding may be accounted by counties which are large metro areas tend to have large populations with both categories.
 
-This finding implies that certain higher housing cost is associated with median household income. However, lower housing cost features were not analyzed due to their large number, values with little or not rent and not being adjusted for cost of living (i.e. some counties may have significantly lower rents). As a result, only the higher housing cost features were analyzed.
+The model fit demonstrated that monthly housing cost is associated with median household income. The model did not include lower housing cost features due to their large number, values with little or not rent and not being adjusted for cost of living (i.e. some counties may have significantly lower rents). As a result, only higher housing cost features were included in the model.
+
+The plot shows count of residents below 80% of median income and residents whose monthly housing income is above $3k per month. The regression line indicates a positive relationship, so counties with higher low income population also had higher population count with high monthly housing cost. This finding is an unexpected but may be accounted by counties which are large metro areas tend to have large populations with both categories.
 
 The pandemic may impact the ability of residents within disadvantaged communities to cover their monthly housing costs. One possible area for analysis would be to determine the ability of residents in disadvantage communities to cover these costs to evaluate their true impacts.
 
