@@ -453,6 +453,8 @@ xwalk_acs19_hh$hh_40k = as.numeric(as.character(xwalk_acs19_hh$hh_40k))
 xwalk_acs19_hh$hh_45k = as.numeric(as.character(xwalk_acs19_hh$hh_45k))
 xwalk_acs19_hh$hh_50k = as.numeric(as.character(xwalk_acs19_hh$hh_50k))
 
+# total population count below 20% of median household income ($56k/year)    
+# https://stackoverflow.com/questions/26046776/sum-two-columns-in-r
 xwalk_acs19_hh_median$hh_median = xwalk_acs19_hh$hh_less_10k +
 xwalk_acs19_hh$hh_10k +
 xwalk_acs19_hh$hh_15k +
@@ -814,17 +816,24 @@ acs19_nofactor = read.csv("data/acs19_noid.csv")
 
 # subset for 0.20 quantile per CA HUD guidelines
 # https://www.hcd.ca.gov/grants-funding/income-limits/state-and-federal-income-limits/docs/income-limits-2020.pdf
-hh_median_qt20 = quantile(
-    as.numeric(as.character(acs19_nofactor$hh_median)), 0.2
-)
-hh_median_qt20
+# hh_median_qt20 = quantile(
+#     as.numeric(as.character(acs19_nofactor$hh_median)), 0.2
+# )
+# print("Population Count Below 20% of Median Household Income (2019 ACS):")
+# hh_median_qt20
 
 # subset for 0.80 quantile per CA HUD guidelines
 # https://www.hcd.ca.gov/grants-funding/income-limits/state-and-federal-income-limits/docs/income-limits-2020.pdf
-hh_median_qt80 = quantile(
-    as.numeric(as.character(acs19_nofactor$hh_median)), 0.8
-)
-hh_median_qt80
+# hh_median_qt80 = quantile(
+#     as.numeric(as.character(acs19_nofactor$hh_median)), 0.8
+# )
+# print("Population Count Above 80% of Median Household Income (2019 ACS):")
+# hh_median_qt80
+
+# subset for 0.20 quantile per CA HUD guidelines
+# https://www.hcd.ca.gov/grants-funding/income-limits/state-and-federal-income-limits/docs/income-limits-2020.pdf
+print("80% of Non-Metropolitan County Median Income (2020 CA HUD Guidelines):")
+70700*0.8
 
 ```
 
