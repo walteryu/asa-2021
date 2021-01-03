@@ -1153,17 +1153,16 @@ col_edu = c(
 )
 cor(acs19_nofactor$hh_median, acs19_nofactor[col_edu])
 
-# visualize income and transit variables
+# visualize income and education variables
 # https://www.theanalysisfactor.com/linear-models-r-plotting-regression-lines/
 plot(log(hh_median ) ~ log(as.numeric(edu_doctorate)),
-    main="Median Household Income and Education Attainment (Log Scale Plot)",
-    xlab="Education Attainment of Doctorate Degree (Household Count)",
-    ylab="Median Household Income ($)",
+    main="Low Income Population and Education Attainment (Log Scale Plot)",
+    xlab="Education Attainment of Doctorate (Count)",
+    ylab="Below 80% Median Income (Count)",
     pch=16,
     col="blue",
     data=acs19_nofactor
 )
-
 # trend line plot
 abline(
     fit_acs19_edu_doctorate,
