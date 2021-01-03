@@ -1274,21 +1274,18 @@ plot(fit_acs19_poverty_all)
 
 ### 2019 ACS - Model Refinement
 
-> Improve linear model with best features and analyze results.
+> Improve single models by selecting best features and including into single model.
 
-The linear regression model was refined by fitting the best attributes from the data analysis which improved the model as verified with a lower p-value and higher r-squared value than as compared to the other models using individual data tables.
+The linear regression model was refined by fitting the best attributes from each single linear model which improved the model as verified with a lower p-value and higher r-squared value than as compared to the other models using individual data tables.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
 # fit best features to evaluate their importance
 fit_acs19_best_features = lm(
     log(hh_median) ~ log(as.numeric(housing_more_3000)) +
-    log(as.numeric(commute_transit)) +
-    log(as.numeric(commute_remote)) +
-    log(as.numeric(commute_carpool)) +
+    log(as.numeric(commute_car)) +
+    log(as.numeric(commute_walk)) +
     log(as.numeric(edu_doctorate)) +
-    log(as.numeric(edu_professional)) +
-    log(as.numeric(edu_master)) +
     log(as.numeric(edu_bachelor)),
     data=acs19_nofactor
 )
