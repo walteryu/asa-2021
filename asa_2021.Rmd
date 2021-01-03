@@ -1293,29 +1293,28 @@ summary(fit_acs19_best_features)
 
 # diagnostic plot
 par(mfrow=c(2,2))
-plot(fit_acs19_poverty_all)
+plot(fit_acs19_best_features)
 
 ```
 
 ### 2019 ACS - Disadvantaged Communities
 
-> This section identifies disadvantaged communities with a subset of the ACS 2019 dataset of communities with the 20% lowest percentile of median household income.
+> This section identifies disadvantaged communities by subset of the ACS 2019 dataset of communities with highest populations below 80% of median household income.
 
-The 20% quantile of median household income was selected as a threshold to identify disadvantaged communities based on the CA HUD [low income guidelines][4.00] which indicates a similar metric. In general, income level is typically used to evaluate communities and residents in need of government assistance so it was used for this portion of data analysis.
+80% of median household income was selected as a threshold to identify disadvantaged communities based on the CA HUD [low income guidelines][4.00] which indicates a similar metric. In general, income level is typically used to evaluate communities and residents in need of government assistance so it was used for this portion of data analysis.
 
 [04.00]: https://www.hcd.ca.gov/grants-funding/income-limits/state-and-federal-income-limits/docs/income-limits-2020.pdf
 
-The California communities with the lowest median household income based the 2019 ACS dataset are listed below in rank order:
+The California communities with the highest count of residents below 80% median household income are listed below in rank order:
 
-1. Tehama County, California    ($25,310/year)
-2. Lake County, California      ($25,968/year)
-3. Yuba County, California      ($26,827/year)
-4. Sutter County, California    ($33,039/year)
-5. Mendocino County, California ($34,478/year)
-6. Nevada County, California    ($39,365/year)
-7. Madera County, California    ($44,387/year)
-8. Kings County, California     ($44,761/year)
-9. Napa County, California      ($48,107/year)
+1. Los Angeles County:      1,389,928
+2. San Diego County:        407,303
+3. Orange County:           323,340
+4. Riverside County:        302,372
+5. San Bernardino County:   283,845
+6. Sacramento County:       232,810
+7. Alameda County:          167,663
+8. Fresno County:           161,743
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
