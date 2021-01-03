@@ -845,15 +845,17 @@ print("80% of Non-Metropolitan County Median Income (2020 CA HUD Guidelines):")
 
 Data analysis was conducted as follows:
 
-1. Fit 2019 ACS data tables into separate linear regression models to identify which had the best fit and association with median household income.
-2. Interpret model fit, coefficient interpretation and model diagnostics to refine model by selecting the best data features and combining into its own linear regression model.
-3. Identify communities with lowest median income and highest COVID-19 death counts by analyzing the 2019 ACS and NCHS COVID-19 mortality count data.
+1. Fit 2019 ACS data tables into separate linear regression models to identify which had the best fit and association with population count below 80% median household income. Model summary was evaluated to identify model fit, p-values and r-squared values.
+2. Interpret model fit, coefficient interpretation and model diagnostics to refine model by selecting the best data features and combining into its own linear regression model. Diagnostic plots were reviewed for possible outlier points with high leverage.
+3. Identify counties with most residents below 80% median household income and highest COVID-19 death counts by analyzing the 2019 ACS and NCHS COVID-19 mortality count data. Counties with highest count of residents in both datasets were identified and compared.
 
 ### 2019 ACS - Commute Mode
 
 > Commute mode has a positive relationship with median household income as verified with the model fit and low p-value. Features were split into two groups for analysis: car-based modes and transit-based modes.
 
-Features within each group were fit individually into their own model. Carpool had a good fit in the car-based modes. Transit/remote work had good fits with transit-based modes. This finding implies that certain commute modes (i.e. carpool, transit and remote work) have a better relationship to income than other ones (i.e. walking).
+Features within each group were fit individually into their own model. The car-only mode had the best fit in the car-based modes. Walking had the best good fit with transit-based modes. This finding implies that certain commute modes (i.e. car-only and walking) have a better relationship to income than other ones (i.e. carpool and remote work).
+
+The plot shows count of residents below 80% of median income and residents who walks to work. The regression line indicates a negative relationship, so counties with higher low income population had higher population count which walks to work.
 
 The pandemic may impact transit and resulted in additional remote work for the work force. One possible area for analysis would be to determine the level of reliance of residents in disadvantage communities on these modes to evaluate their true impacts.
 
