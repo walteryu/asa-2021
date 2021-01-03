@@ -53,8 +53,8 @@ This project and its analysis are designed to be interpretable, so it organizes 
 This entry makes the following assumptions:
 
 1. Although the scope is limited to California communities, the methodology may be applied to other states since it is based on data extracted from the U.S. Census for the state/county level and do not contain any characteristics specific to California.
-2. State and federal [guidelines][00.11] typically define disadvantaged communities as being low-income, so median household income was used to identify such communities.
-3. Data analysis was documented to be clear and easily interpretable, so linear regression and the [Law of Parsimony][00.12] were applied whenever possible.
+2. State and federal [guidelines][00.11] typically define disadvantaged communities as being low-income, so median household income was used to identify such communities. In addition, state and federal guidelines typically define low income as 20% of median household income.
+3. Data analysis was documented to be clear and easily interpretable, so linear regression and the [Law of Parsimony][00.12] were applied whenever possible. The linear models are improved incrementally upon for interpretability.
 
 [00.11]: https://www.hud.gov/topics/rental_assistance/phprog
 [00.12]: https://en.wikipedia.org/wiki/Occam%27s_razor
@@ -195,7 +195,7 @@ Datasets of interest were identified from the National Center for Health Statist
 
 ### Geospatial Datasets
 
-Datasets of interest were identified from the U.S. Census COVID-19 data portal under the categorical dataset section. They were not used during the analysis but documented for future use.
+Datasets of interest were identified from the U.S. Census COVID-19 data portal under the categorical dataset section. They were not used during the analysis due to time and scope constraints so are documented for future use.
 
 1. U.S. Census - COVID-19 Demographic and Economic Resources
 * Description: American Community Survey (ACS) about household income ranges and cutoffs and Poverty Status.
@@ -230,7 +230,8 @@ This module completes the tasks listed below; however, all text output, warnings
 2. Remove first record from each dataframe (header data)
 3. Import selected columns from full dataset
 4. Relabel selected columns from full dataset
-5. Join tables together into single dataframe
+5. Total population below 20% of median household income
+6. Join tables together into single dataframe
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 
