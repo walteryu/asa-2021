@@ -1449,19 +1449,19 @@ nchs_covid_county_ca <- subset(
     select=c(State, County.name, Urban.Rural.Code, Deaths.involving.COVID.19)
 )     
 
-# filter for mortality count above 0.80 quantile
+# filter for mortality count below 0.20 quantile
 # https://stackoverflow.com/questions/6253837/subset-data-frame-based-on-percentage
-nchs_covid_county_20 = subset(
-    nchs_covid_county_ca, as.numeric(Deaths.involving.COVID.19) <= quantile(as.numeric(Deaths.involving.COVID.19), 0.2)
-)
+# nchs_covid_county_20 = subset(
+#     nchs_covid_county_ca, as.numeric(Deaths.involving.COVID.19) <= quantile(as.numeric(Deaths.involving.COVID.19), 0.2)
+# )
 
 # sort in descending order
 # https://dplyr.tidyverse.org/reference/desc.html
 # names(nchs_covid_county_20)
 # dim(nchs_covid_county_20)
-nchs_covid_county_20 %>% arrange(desc(Deaths.involving.COVID.19))
+# nchs_covid_county_20 %>% arrange(desc(Deaths.involving.COVID.19))
 
-# filter for mortality count above 0.20 quantile
+# filter for mortality count above 0.80 quantile
 # https://stackoverflow.com/questions/6253837/subset-data-frame-based-on-percentage
 nchs_covid_county_80 = subset(
     nchs_covid_county_ca, as.numeric(Deaths.involving.COVID.19) >= quantile(as.numeric(Deaths.involving.COVID.19), 0.8)
