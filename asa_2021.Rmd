@@ -874,11 +874,11 @@ The pandemic may impact transit and resulted in additional remote work for the w
 
 # note: fit to log scale
 # source: https://stats.stackexchange.com/questions/176595/simple-log-regression-model-in-r
-fit_acs19_commute_transit <- lm(
-    log(hh_median) ~ log(as.numeric(commute_transit)),
+fit_acs19_commute_walk <- lm(
+    log(hh_median) ~ log(as.numeric(commute_walk)),
     data=acs19_nofactor
 )
-round(summary(fit_acs19_commute_transit)$coeff, 6)
+round(summary(fit_acs19_commute_walk)$coeff, 6)
 
 # linear regression - transit + walk
 fit_acs19_commute_transit_walk <- lm(
@@ -899,7 +899,7 @@ round(summary(fit_acs19_commute_transit_remote)$coeff, 6)
 
 # variance analysis
 anova(
-    fit_acs19_commute_transit,
+    fit_acs19_commute_walk,
     fit_acs19_commute_transit_walk,
     fit_acs19_commute_transit_remote
 )
@@ -938,13 +938,18 @@ anova(
 
 # visualize income and transit variables
 # https://www.theanalysisfactor.com/linear-models-r-plotting-regression-lines/
-plot(log(hh_median) ~ log(as.numeric(commute_transit)),
-    main="Median Household Income and Transit Cost (Log Scale Plot)",
-    xlab="Transit Cost ($)",
-    ylab="Median Household Income ($)",
+plot(log(hh_median) ~ log(as.numeric(commute_walk)),
+    main="Low Income Population and Commute by Walking (Log Scale Plot)",
+    xlab="Commute by Walking (Count)",
+    ylab="Below 80% Median Income (Count)",
     pch=16,
     col="blue",
     data=acs19_nofactor
+)
+# trend line plot
+abline(
+    fit_acs19_commute_walk,
+    col="red"
 )
 
 # linear regression - all
@@ -958,12 +963,6 @@ fit_acs19_commute_all <- lm(
     data=acs19_nofactor
 )
 summary(fit_acs19_commute_all)
-
-# trend line plot
-abline(
-    fit_acs19_commute_transit,
-    col="red"
-)
 
 # diagnostic plot
 par(mfrow=c(2,2))
