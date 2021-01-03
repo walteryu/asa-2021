@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Entry Details
 
-* Event: [ASA Data Challenge Expo][00.00]
+* Event: [2021 ASA Data Challenge Expo][00.00]
 * Name: Walter Yu
 * Organization: [Code for America][00.13]
 * Section: [Sacramento Brigade][00.14]
