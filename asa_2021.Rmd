@@ -1465,7 +1465,35 @@ Data analysis findings which may be applied to other U.S. regions are as follows
 
 > This section provides possible areas for additional analysis.
 
-1. PCA and Variance Plot
-2. Histogram to Evaluate Skew
-3. Logistic Regression for Median Income and Location
-4. Diagnostic Plot and Analysis of Logistic Regression
+1. PCA and Variance Plot: Identify principal components to validate findings from this project, and use plots to identify additional features which may contribute to variance.
+2. Histogram to Evaluate Skew: Plot distribution of each data table to evaluate their distribution and possible skew which may exist within the datasets.
+3. Logistic Regression: Analyze median household income with location to evaluate whether location has a positive relationship with median income.
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+# total population count below 20% of median household income ($56k/year)    
+# https://stackoverflow.com/questions/26046776/sum-two-columns-in-r
+xwalk_acs19_hh$hh_less_10k = as.numeric(as.character(xwalk_acs19_hh$hh_less_10k))
+xwalk_acs19_hh$hh_10k = as.numeric(as.character(xwalk_acs19_hh$hh_10k))
+xwalk_acs19_hh$hh_15k = as.numeric(as.character(xwalk_acs19_hh$hh_15k))
+xwalk_acs19_hh$hh_20k = as.numeric(as.character(xwalk_acs19_hh$hh_20k))
+xwalk_acs19_hh$hh_25k = as.numeric(as.character(xwalk_acs19_hh$hh_25k))
+xwalk_acs19_hh$hh_30k = as.numeric(as.character(xwalk_acs19_hh$hh_30k))
+xwalk_acs19_hh$hh_35k = as.numeric(as.character(xwalk_acs19_hh$hh_35k))
+xwalk_acs19_hh$hh_40k = as.numeric(as.character(xwalk_acs19_hh$hh_40k))
+xwalk_acs19_hh$hh_45k = as.numeric(as.character(xwalk_acs19_hh$hh_45k))
+xwalk_acs19_hh$hh_50k = as.numeric(as.character(xwalk_acs19_hh$hh_50k))
+
+xwalk_acs19_hh_median$hh_median = xwalk_acs19_hh$hh_less_10k +
+xwalk_acs19_hh$hh_10k +
+xwalk_acs19_hh$hh_15k +
+xwalk_acs19_hh$hh_20k +
+xwalk_acs19_hh$hh_25k +
+xwalk_acs19_hh$hh_30k +
+xwalk_acs19_hh$hh_35k +
+xwalk_acs19_hh$hh_40k +
+xwalk_acs19_hh$hh_45k +
+xwalk_acs19_hh$hh_50k
+xwalk_acs19_hh_median$hh_median
+
+```
