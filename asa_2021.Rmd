@@ -1377,26 +1377,50 @@ The California communities with the highest count of residents below 80% median 
 # dim(hh_median_80)
 # unique(hh_median_80$NAME)
 
+# names(acs19)
+# names(acs19_nofactor)
+# names(acs19_hh_income)
+# names(acs19_hh_income_median)
+
+# join tables for county name and median income
+acs19_hh_income_name = inner_join(
+    acs19,
+    acs19_hh_income_median,
+    by="GEO_ID"
+)
+# names(acs19_hh_income_name)
+
+# subset and sort by median income
+# income_name_vars = c("NAME", "hh_median")
+# acs19_hh_income_name_only = acs19_hh_income_name[income_name_vars]
+acs19_hh_income_name_only = subset(
+    acs19_hh_income_name,
+    as.numeric(as.character(hh_median)) >= quantile(as.numeric(as.character(hh_median)), 0.8),
+    select=c(NAME, hh_median)
+)
+# arrange(acs19_hh_income_name_only, as.numeric(as.character(hh_median)))
+acs19_hh_income_name_only %>% arrange(desc(hh_median))
+
 ```
 
 ### NCHS COVID-19 Data
 
-> This section identifies impacts on disadvantaged communities with a subset of the NHCS COVID dataset of communities with the 20% highest percentile of COVID-related mortality count.
+> This section identifies impacts on disadvantaged communities with a subset of the NHCS COVID dataset of communities with population count above 20% of COVID-related mortality count.
 
 The NHCS COVID-19 [mortality count data][4.01] reported by county was used to measure the impact of the pandemic on communities within California. The results showed that larger metro areas had higher total mortality count as compared with those in smaller, rural communities. This trend is validated in findings from sources such as the Los Angeles Times [COVID-19 Dashboard][03.01] which provides data visualizations of highest case counts within California.
 
 [04.01]: https://data.cdc.gov/NCHS/Provisional-COVID-19-Death-Counts-by-County-and-Ra/k8wy-p9cg
 [04.02]: https://www.latimes.com/projects/california-coronavirus-cases-tracking-outbreak/
 
-One possible area for analysis would be to identify disadvantage communities within each California county to differentiate their leves of need since the current rank of counties indicate pandemic impacts primarily based on metro type and total population count.
+One possible area for analysis would be to identify disadvantage communities within each California county to differentiate their levels of need since the current rank of counties indicate pandemic impacts primarily based on metro type and total population count.
 
 California communities with the highest COVID-related mortality count based the NCHS dataset are listed below in rank order:
 
-1. Los Angeles County (Large central metro):    6624
-2. Orange County (Large central metro):         1452
-3. Riverside County (Large central metro):      1448
-4. San Bernardino County (Large fringe metro):  1311
-5. San Diego County (Large central metro):      1150
+1. Los Angeles County (Large central metro):    6,624
+2. Orange County (Large central metro):         1,452
+3. Riverside County (Large central metro):      1,448
+4. San Bernardino County (Large fringe metro):  1,311
+5. San Diego County (Large central metro):      1,150
 6. Stanislaus County (Medium metro):            537
 7. Sacramento County (Large central metro):     525
 8. San Joaquin County (Medium metro):           484
