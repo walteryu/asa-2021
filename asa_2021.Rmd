@@ -1177,7 +1177,7 @@ plot(fit_acs19_edu_doctorate)
 
 ### 2019 ACS - Race
 
-> Race has a positive relationship with median household income as verified with the model fit and low p-value. In particular, residents which indicated "American Indian", "Alaska Native alone" and "Asian alone" as their race were more closely associated with median household income.
+> Race has a positive relationship with median household income as verified with the model fit and low p-value. In particular, residents which indicated "White alone", "American Indian and Alaska Native alone" and "Two or more races" as their race were more closely associated with median household income.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
@@ -1239,9 +1239,9 @@ plot(fit_acs19_race_all)
 
 ### 2019 ACS - Poverty Level
 
-> Poverty level has a positive relationship with median household income as verified with the model fit and low p-value. However when either of the two features are isolated, then their fit is poor so poverty is not particularly useful for the analysis.
+> Poverty level has a positive relationship with median household income as verified with the model fit and low p-value. This model was not used for additional analysis since the dataset consists of two halves so did not have sufficient granularity for such use.
 
-The poor fit is likely due to the large size of each group (above or below poverty income level) which basically divides the dataset into two halves and results in poor fit due to large variance of each subset. Poverty level is intuitively a good indicator of median household income; however, the feature is not granular enough to use for additional analysis.
+Although the model fit was excellent, it did not have sufficient granularity to warrant additional analysis. In addition, poverty level is determined based on median income so the features are highly correlated and not provide useful results.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
