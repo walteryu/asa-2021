@@ -1066,9 +1066,11 @@ plot(fit_acs19_housing_3000)
 
 ### 2019 ACS - Education Attainment
 
-> Education attainment has a positive relationship with median household income as verified with the model fit and low p-value. In particular, education attainment including and beyond a bachelors degree was more closely associated with median household income.
+> Education attainment has a positive relationship with median household income as verified with the model fit and low p-value. The model fit revealed an unexpected result that counties with larger low income populations also had larger populations with high education attainment (doctorate degree). However, this finding may be accounted by counties which are large metro areas tend to have large populations with both categories.
 
-This finding implies that certain higher education attainment is associated with median household income. When data features were added the model, most maintained relatively lower p-values. In particular, higher levels of education (e.g. doctorate degree) generally had a positive relationship with median household income.
+The model fit demonstrated that education attainment is associated with median household income. The model did not include all education attainment features due to their large number (i.e. all grade levels). As a result, only higher education attainment features were included in the model.
+
+The plot shows count of residents below 80% of median income and residents with education attainment of a doctorate degree. The regression line indicates a positive relationship, so counties with higher low income population also had higher population count with doctorate degrees. This finding is an unexpected but may be accounted by counties which are large metro areas tend to have large populations with both categories.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
