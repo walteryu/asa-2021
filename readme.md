@@ -2,22 +2,24 @@
 
 ### Entry Details
 
-* [ASA Data Challenge Expo][00.00]
+* Event: [2021 ASA Data Challenge Expo][00.00]
 * Name: Walter Yu
-* Date: Fall 2020
+* Organization: [Code for America][00.13]
+* Section: [Sacramento Brigade][00.14]
+* Code Repository: [Github][00.15]
 
 [00.00]: https://community.amstat.org/dataexpo/home
+[00.13]: https://www.codeforamerica.org/
+[00.14]: https://codeforsacramento.org/
+[00.15]: https://github.com/walteryu/asa-2021
 
 ### Executive Summary
 
-This entry aims to help disadvantaged communities during the COVID-19 pandemic by answering the following questions:
+This project aims to help disadvantaged communities during the COVID-19 pandemic by answering the questions listed below through analysis of core and supplemental datasets. The intended audience are state/local governments, non-governmental organizations (NGOs) and volunteers which are able to provide aid and services to these communities.
 
 1. Explore the relationship between socioeconomic features of the U.S. population and disadvantaged communities.
-2. Identify disadvantaged communities based on their median household income and socioeconomic factors.
-3. Identify which disadvantaged communities have been most impacted by the COVID-19 pandemic and in need of public services.
-4. Provide recommendations on helping these communities based on data analysis results.
-
-The intended audience are state/local governments, non-governmental organizations (NGOs) and volunteers which are able to provide aid and services to these communities.
+2. Identify disadvantaged communities based on their median household income. These communities are likely be more impacted by the COVID-19 pandemic and in need of public services.
+3. Provide recommendations on helping these communities based on data analysis results.
 
 ### Scope
 
@@ -27,21 +29,21 @@ This entry focuses on California communities to control its scope since several 
 
 ### Methodology
 
-This entry is designed to be interpretable, so it clearly outlines data analysis steps into the following modules:
+This project and its analysis are designed to be interpretable, so it organizes data analysis steps into the following modules:
 
 1. Overview: Outline approach, assumptions and data sources
-2. Data Processing: Data preparation and manipulation for analysis
+2. Data Processing: Data preparation for analysis
 3. Data Analysis: Model fit, coefficient interpretation and diagnostics
-4. Data Visualization: Communicate findings through data plots  
-5. Recommendations: Document key findings from data analysis
+4. Recommendations: Document key findings from data analysis
+5. Future Improvements: Possible improvements upon completing analysis
 
 ### Assumptions
 
 This entry makes the following assumptions:
 
-1. Although the scope is limited to California communities, the methodology can be applied to other states since it is based on data extracted from the U.S. Census for the state/county level and do not contain any characteristics specific to California.
-2. State and federal [guidelines][00.11] typically define disadvantaged communities as being low-income, so median household income was used to identify such communities.
-3. Data analysis was documented to be clear and easily interpretable, so linear regression and the [Law of Parsimony][00.12] were applied whenever possible
+1. Although the scope is limited to California communities, the methodology may be applied to other states since it is based on data extracted from the U.S. Census for the state/county level and do not contain any characteristics specific to California.
+2. State and federal [guidelines][00.11] typically define disadvantaged communities as being low-income, so median household income was used to identify such communities. In addition, state and federal guidelines typically define low income as 20% of median household income.
+3. Data analysis was documented to be clear and easily interpretable, so linear regression and the [Law of Parsimony][00.12] were applied whenever possible. The linear models are improved incrementally upon for interpretability.
 
 [00.11]: https://www.hud.gov/topics/rental_assistance/phprog
 [00.12]: https://en.wikipedia.org/wiki/Occam%27s_razor
@@ -168,16 +170,21 @@ Datasets of interest were identified from the U.S. Census COVID-19 data portal u
 
 ### Supplemental Datasets (NCHS)
 
-Datasets of interest were identified from the National Center for Health Statistics (NCHS) data portal.
+Datasets of interest were identified from the National Center for Health Statistics (NCHS) data portal for COVID-related mortality count by California county to evaluate impacts by the pandemic.
 
 1. NCHS - COVID-19 Data from the National Center for Health Statistics
 * Dataset: [Provisional COVID-19 Death Counts by County and Race][02.06]
 
 [02.06]: https://data.cdc.gov/NCHS/Provisional-COVID-19-Death-Counts-by-County-and-Ra/k8wy-p9cg
 
+2. NCHS - COVID-19 Data from the National Center for Health Statistics
+* Dataset: [Provisional COVID-19 Death Counts in the United States by County][02.07]
+
+[02.07]: https://data.cdc.gov/NCHS/Provisional-COVID-19-Death-Counts-in-the-United-St/kn79-hsxy
+
 ### Geospatial Datasets
 
-Datasets of interest were identified from the U.S. Census COVID-19 data portal under the categorical dataset section.
+Datasets of interest were identified from the U.S. Census COVID-19 data portal under the categorical dataset section. They were not used during the analysis due to time and scope constraints so are documented for future use.
 
 1. U.S. Census - COVID-19 Demographic and Economic Resources
 * Description: American Community Survey (ACS) about household income ranges and cutoffs and Poverty Status.
